@@ -1,0 +1,48 @@
+{
+  "name": "Rafiqi_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ameer",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "npm run test:integration",
+    "test:integration": "nyc mocha --full-trace \"tests/**/*.test.js\" --timeout 999999 --exit"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha ": "^5.2.0",
+    "nyc": "^13.1.0",
+    "sinon": "^7.1.1",
+    "supertest": "^3.3.0"
+  },
+  "nyc": {
+    "include": [
+      "app.js",
+      "server.js",
+      "controllers/*.js",
+      "handlers/*.js",
+      "helpers/*.js"
+    ],
+    "exclude": [
+      "node_modules/**"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true,
+    "all": true
+  }
+}
