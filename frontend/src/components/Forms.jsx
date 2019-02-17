@@ -59,8 +59,6 @@ const FormData = ({ handleBlur, handleChange, values, ...props }) => {
             />
           </div>
         </div>{" "}
-
-
         <div className="col-md-4">
           <label className="sr-only" htmlFor="age">
             Current Country of residency
@@ -78,9 +76,8 @@ const FormData = ({ handleBlur, handleChange, values, ...props }) => {
               value={values.currentCountry}
             />
           </div>
-          </div>
-
-          <div className="col-md-4">
+        </div>
+        <div className="col-md-4">
           <label className="sr-only" htmlFor="age">
             Current Country of residency
           </label>
@@ -97,19 +94,9 @@ const FormData = ({ handleBlur, handleChange, values, ...props }) => {
               value={values.currentCountry}
             />
           </div>
-          </div>
-
-
-
+        </div>
       </div>
-
-
-      
       <br />
-      
-
-
-
       Highest degree obtained
       <div className="form-row align-items-center">
         <div className="col-md-3 pl-3">
@@ -291,7 +278,7 @@ const FormikeComponent = withFormik({
       fullNmae: fullNmae || "",
       email: email || "",
       age: age || 0,
-      currentCountry: currentCountry || '',
+      currentCountry: currentCountry || "",
       bachelor: bachelor || false,
       associateDegree: associateDegree || false,
       masterOrHigher: masterOrHigher || false,
