@@ -47,10 +47,17 @@ const GetFormOption = () => {
   });
 };
 
-const FormData = ({ handleBlur, handleChange, values, errors, touched }) => {
+const FormData = ({
+  handleBlur,
+  handleChange,
+  values,
+  errors,
+  touched,
+  saveAndGoTo
+}) => {
   console.log(values);
   return (
-    <Form>
+    <Form onSubmit={saveAndGoTo}>
       <div className="form-row">
         <div className="form-group col-md-4 w-25">
           <label htmlFor="fullName">Full Name</label>
@@ -78,8 +85,8 @@ const FormData = ({ handleBlur, handleChange, values, errors, touched }) => {
             id="gender"
           >
             <option value="Select your gender">Select A Gender</option>
-            <option value="Mail">Male</option>
-            <option value="Female">Female</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
             <option value="gay">gay</option>
             <option value="others">others</option>
             <option values="preferNotToSay">Prefer Not Say</option>
@@ -121,7 +128,7 @@ const FormData = ({ handleBlur, handleChange, values, errors, touched }) => {
           />
         </div>
         <div className="form-group col-md-4">
-          <label htmlFor="age">Current Country of residency</label>
+          <label htmlFor="currentCountry">Current Country of residency</label>
           <Field
             name="currentCountry"
             component="select"
@@ -232,6 +239,7 @@ const FormData = ({ handleBlur, handleChange, values, errors, touched }) => {
           )}
         </div>
       </div>
+      <label htmlFor="highestDegreeObtained" />
       Highest degree obtained
       <div className="form-row align-items-center">
         <div className="col-md-3 pl-3">
@@ -257,7 +265,7 @@ const FormData = ({ handleBlur, handleChange, values, errors, touched }) => {
               component={RadioButton}
               name="highestDegreeObtained"
               id="masterOrHigher"
-              label="MasterOrHigher"
+              label="Master/Higher"
               className="form-check-label"
             />
 
@@ -468,32 +476,32 @@ const FormikeComponent = withFormik({
       props.startYourOwnBusiness
     );
     window.localStorage.setItem("gdpr", props.gdpr);
-  }
-  // @Todo find a way to fix the below validation or find a different way to valid form fields.
-  // The issue is currently the valid is working and validating the form fields.
-  // But then it stops the form from submitting
-  // validationSchema: Yup.object().shape({
-  //   fullName: Yup.string()
-  //     .min(4)
-  //     .required(),
-  //   gender: Yup.string().required(),
-  //   email: Yup.string()
-  //     .email()
-  //     .required(),
-  //   age: Yup.number()
-  //     .min(2)
-  //     .required(),
-  //   currentCountry: Yup.string().required(),
-  //   englishLevel: Yup.string().required(),
-  //   digitalToolsLevel: Yup.string().required(),
-  //   localLanguageLevel: Yup.string().required(),
-  //   highestDegreeObtained: Yup.string().required(),
-  //   educationAndWorkBackground: Yup.string().required(),
-  //   assessYourJobReadiness: Yup.string().required(),
-  //   startYourOwnBusiness: Yup.string().required(),
-  //   lostDomainKnowledge: Yup.string().required(),
-  //   gdpr: Yup.string().required()
-  // })
+  },
+  //  @Todo find a way to fix the below validation or find a different way to valid form fields.
+  //  The issue is currently the valid is working and validating the form fields.
+  //  But then it stops the form from submitting
+  validationSchema: Yup.object().shape({
+    fullName: Yup.string()
+      .min(4)
+      .required(),
+    gender: Yup.string().required(),
+    email: Yup.string()
+      .email()
+      .required(),
+    age: Yup.number()
+      .min(2)
+      .required(),
+    currentCountry: Yup.string().required(),
+    englishLevel: Yup.string().required(),
+    digitalToolsLevel: Yup.string().required(),
+    localLanguageLevel: Yup.string().required(),
+    highestDegreeObtained: Yup.string().required(),
+    educationAndWorkBackground: Yup.string().required(),
+    assessYourJobReadiness: Yup.string().required(),
+    startYourOwnBusiness: Yup.string().required(),
+    lostDomainKnowledge: Yup.string().required(),
+    gdpr: Yup.string().required()
+  })
 })(FormData);
 
 export default FormikeComponent;
