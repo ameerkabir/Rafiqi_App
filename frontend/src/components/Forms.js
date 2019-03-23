@@ -386,7 +386,7 @@ const FormData = ({
       <br />
       <br />
       <div className="form-row align-items-center">
-        <button className="btn-prev-next" type="submit">
+        <button className="btn-prev-next btn btn-primary bg-blue" type="submit">
           Save & Next
         </button>
       </div>
