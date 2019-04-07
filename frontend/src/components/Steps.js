@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Forms from "./Forms";
 import Home from "./Home";
 export const steps = {
@@ -14,21 +15,29 @@ export default class Steps extends Component {
       values: []
     };
   }
-  saveAndGoTo = async (values, currentStep, toStep) => {
-    // it's the last step
+  async getData(data) {
+    this.setState({
+      data: data
+    });
+  }
 
+  async componentDidMount() {}
+  saveAndGoTo = async (values, currentStep, toStep) => {
     toStep = steps.result;
     const { step } = this.state;
-    console.log(step);
     values = {
       ...this.state.values,
-      [currentStep]: values
+      [currentStep]: values,
+      ...this.state.data
     };
-    debugger;
+
     this.setState({
       values: values,
       step: toStep
     });
+    const postData = await axios.post(`/data`, values);
+    debugger;
+    const dataToShow = await postData;
   };
   render() {
     switch (this.state.step) {
@@ -36,7 +45,11 @@ export default class Steps extends Component {
         return <Forms saveAndGoTo={this.saveAndGoTo} />;
       case steps.result:
         return (
-          <Home values={this.state.values} saveAndGoTo={this.saveAndGoTo} />
+          <Home
+            values={this.state.values}
+            saveAndGoTo={this.saveAndGoTo}
+            data={this.state.data}
+          />
         );
       default:
         return <Home />;
