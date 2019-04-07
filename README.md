@@ -39,9 +39,9 @@ Launches the test runner in the interactive watch mode.<br>
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### write rules for testing and running backend code
+### To run the  backend code
 
-if you already install yarn globally on your machine then do the following to set up the back-end
+#### If you already install yarn globally on your machine then do the following to set up the back-end
 
 ### `cd backend`
 
