@@ -6,7 +6,7 @@ Rafiqi App
 
 This will clone the project to your local machine
 
-Then cd into one of the `frontend` folder (cd frontend)
+Then cd into the `frontend` folder `cd frontend`
 
 In the project directory, you can run:
 
