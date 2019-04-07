@@ -6,7 +6,7 @@ Rafiqi App
 
 This will clone the project to your local machine
 
-Then cd into one of the `frontend` folder (cd frontend)
+Then cd into the `frontend` folder `cd frontend`
 
 In the project directory, you can run:
 
@@ -66,4 +66,4 @@ This will start the node server on port 4000, to test that your server works fin
 ### some times you want to get the latest changes from master in that case you can run
 
 `git merge origin master` <br>
-This way your always up to date with main branch which is master
+This way your always up to date with the main branch which is master
