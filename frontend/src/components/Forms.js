@@ -53,11 +53,11 @@ const FormData = ({
   values,
   errors,
   touched,
+  handleSubmit,
   saveAndGoTo
 }) => {
-  console.log(values);
   return (
-    <Form onSubmit={saveAndGoTo}>
+    <Form onSubmit={handleSubmit}>
       <div className="form-row">
         <div className="form-group col-md-4 w-25">
           <label htmlFor="fullName">Full Name</label>
@@ -66,15 +66,10 @@ const FormData = ({
             type="text"
             className="form-control mb-2"
             id="fullName"
-            placeholder="Fatma Adam"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.fullName === undefined ? "" : values.fullName}
           />
-          {touched && errors.fullName && (
-            <p className="text-danger bold">{`${touched &&
-              errors.fullName}, at least 4 characters`}</p>
-          )}
         </div>
         <div className="form-group col-md-4">
           <label htmlFor="gender">Gender</label>
@@ -84,35 +79,27 @@ const FormData = ({
             className="form-control"
             id="gender"
           >
-            <option value="Select your gender">Select A Gender</option>
+            <option value="Select your gender">Select Your Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="gay">gay</option>
-            <option value="others">others</option>
-            <option values="preferNotToSay">Prefer Not Say</option>
+            <option value="others">Other</option>
+            <option values="preferNotToSay">Prefer Not To Say</option>
           </Field>
-          {touched && errors.gender && (
-            <p className="text-danger bold">This Field is a required Field</p>
-          )}
         </div>
 
         <div className="form-group col-md-4  w-25">
-          <label htmlFor="email">Email Address *</label>
+          <label htmlFor="email">Email Address</label>
 
           <Field
             name="email"
             type="email"
             className="form-control"
             id="email"
-            placeholder="adam@gmail.com"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
             touched={touched}
           />
-          {touched && errors.email && (
-            <p className="text-danger bold">{touched && errors.email}</p>
-          )}
         </div>
         <div className="form-group col-md-4 w-25">
           <label htmlFor="age">Age</label>
@@ -121,7 +108,6 @@ const FormData = ({
             type="number"
             className="form-control"
             id="age"
-            placeholder="25"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.age}
@@ -134,6 +120,7 @@ const FormData = ({
             component="select"
             className="form-control"
             id="currentCountry"
+            required
           >
             <option value="Select a Country">Select A Country</option>
             <option value="netherlands">Netherlands</option>
@@ -145,9 +132,6 @@ const FormData = ({
             <option value="denmark">Denmark</option>
             <option value="france">France</option>
           </Field>
-          {touched && errors.currentCountry && (
-            <p className="text-danger bold">This Field is a required Field</p>
-          )}
         </div>
 
         <div className="form-group col-md-4">
@@ -163,6 +147,7 @@ const FormData = ({
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.englishLevel}
+            required
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -175,9 +160,6 @@ const FormData = ({
             <option value="9">9</option>
             <option value="10">10</option>
           </Field>
-          {touched && errors.englishLevel && (
-            <p className="text-danger bold">This Field is a required Field</p>
-          )}
         </div>
         <div className="form-group col-md-4">
           <label htmlFor="digitalToolsLevel">
@@ -192,6 +174,7 @@ const FormData = ({
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.digitalToolsLevel}
+            required
           >
             <option value="1">1</option>
             <option value="2">2</option>
@@ -204,9 +187,6 @@ const FormData = ({
             <option value="9">9</option>
             <option value="10">10</option>
           </Field>
-          {touched && errors.digitalToolsLevel && (
-            <p className="text-danger bold">This Field is a required Field</p>
-          )}
         </div>
 
         <div className="form-group col-md-4">
@@ -214,6 +194,7 @@ const FormData = ({
             Local language Level(English if you live in the UK)
           </label>
           <Field
+            required
             name="localLanguageLevel"
             component="select"
             className="form-control"
@@ -246,8 +227,10 @@ const FormData = ({
           <RadioButtonGroup
             id="highestDegreeObtained"
             value={values.highestDegreeObtained}
+            required
           >
             <Field
+              required
               component={RadioButton}
               name="highestDegreeObtained"
               id="BachelorDegree"
@@ -255,6 +238,7 @@ const FormData = ({
               className="form-check-label ml-4"
             />
             <Field
+              required
               component={RadioButton}
               name="highestDegreeObtained"
               id="associateDegree"
@@ -262,6 +246,7 @@ const FormData = ({
               className="form-check-label"
             />
             <Field
+              required
               component={RadioButton}
               name="highestDegreeObtained"
               id="masterOrHigher"
@@ -270,6 +255,7 @@ const FormData = ({
             />
 
             <Field
+              required
               component={RadioButton}
               name="highestDegreeObtained"
               id="noDegree"
@@ -290,6 +276,7 @@ const FormData = ({
             background Name
           </label>
           <Field
+            required
             name="educationAndWorkBackground"
             component="select"
             className="form-control mb-2"
@@ -314,6 +301,7 @@ const FormData = ({
             value={values.assessYourJobReadiness}
           >
             <Field
+              required
               component={RadioButton}
               name="assessYourJobReadiness"
               id="lostDomainKnowledge"
@@ -321,6 +309,7 @@ const FormData = ({
               className="form-check-input"
             />
             <Field
+              required
               component={RadioButton}
               name="assessYourJobReadiness"
               id="knowledgeRefresh"
@@ -328,6 +317,7 @@ const FormData = ({
               className="form-check-input"
             />
             <Field
+              required
               component={RadioButton}
               name="assessYourJobReadiness"
               id="readyForWork"
@@ -349,12 +339,14 @@ const FormData = ({
             value={values.startYOurOwnBusiness}
           >
             <Field
+              required
               component={RadioButton}
               name="startYOurOwnBusiness"
               id="yes"
               label="Yes"
             />
             <Field
+              required
               component={RadioButton}
               name="startYOurOwnBusiness"
               id="no"
@@ -367,141 +359,56 @@ const FormData = ({
         </div>
       </div>
       <br />
-      Tick this box if you agree that we use your email to contact you about
-      future opportunities
       <div className="form-row align-items-center">
         <div className="col-md-3 pl-3">
-          <Field
-            name="gdpr"
-            type="checkbox"
-            className="form-check-input"
-            id="gdpr"
-            placeholder="gdpr"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            checked={values.gdpr}
-          />
+          <label htmlFor="gdpr">
+            <Field
+              required
+              name="gdpr"
+              type="checkbox"
+              className="form-check-input"
+              id="gdpr"
+              placeholder="gdpr"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              checked={values.gdpr}
+            />
+            Tick this box if you agree that we use your email to contact you
+            about future opportunities
+          </label>
         </div>
       </div>
       <br />
       <br />
       <div className="form-row align-items-center">
         <button className="btn-prev-next btn btn-primary bg-blue" type="submit">
-          Save & Next
+          explore{" "}
         </button>
       </div>
     </Form>
   );
 };
 const FormikeComponent = withFormik({
-  mapPropsToStatus({
-    fullName,
-    gender,
-    email,
-    age,
-    currentCountry,
-    englishLevel,
-    digitalToolsLevel,
-    localLanguageLevel,
-    highestDegreeObtained,
-    educationAndWorkBackground,
-    assessYourJobReadiness,
-    startYourOwnBusiness,
-    gdpr
-  }) {
-    fullName = window.localStorage.getItem("fullName");
-    gender = window.localStorage.getItem("gender");
-    email = window.localStorage.getItem("email");
-    age = window.localStorage.getItem("age");
-    currentCountry = window.localStorage.getItem("currentCountry");
-    englishLevel = window.localStorage.getItem("englishLevel");
-    digitalToolsLevel = window.localStorage.getItem("digitalToolsLevel");
-    localLanguageLevel = window.localStorage.getItem("localLanguageLevel");
-    highestDegreeObtained = window.localStorage.getItem("currentCountry");
-    educationAndWorkBackground = window.localStorage.getItem(
-      "educationAndWorkBackground"
-    );
-    educationAndWorkBackground = window.localStorage.getItem(
-      "educationAndWorkBackground"
-    );
-    assessYourJobReadiness = window.localStorage.getItem(
-      "assessYourJobReadiness"
-    );
-    startYourOwnBusiness = window.localStorage.getItem("startYourOwnBusiness");
-    gdpr = window.localStorage.getItem("gdpr");
+  mapPropsToStatus: () => ({
+    fullName: "",
+    gender: "",
+    email: "",
+    age: "",
+    currentCountry: "",
+    englishLevel: 1,
+    digitalToolsLevel: 1,
+    localLanguageLevel: "",
+    highestDegreeObtained: "",
+    educationAndWorkBackground: "",
+    assessYourJobReadiness: "",
+    startYourOwnBusiness: false,
+    gdpr: false
+  }),
 
-    return {
-      fullName: fullName || "",
-      gender: gender || "",
-      email: email || "",
-      age: age || 0,
-      currentCountry: currentCountry || "",
-      englishLevel: englishLevel || "",
-      digitalToolsLevel: digitalToolsLevel || "",
-      localLanguageLevel: localLanguageLevel || "",
-      highestDegreeObtained: highestDegreeObtained || "",
-      educationAndWorkBackground: educationAndWorkBackground || "",
-      assessYourJobReadiness: assessYourJobReadiness || "",
-      startYourOwnBusiness: startYourOwnBusiness || false,
-      gdpr: gdpr || false
-    };
-  },
-  handleSubmit(props, actions) {
+  handleSubmit: (values, actions) => {
     const { saveAndGoTo } = actions.props;
-    saveAndGoTo(props, steps.one, steps.result);
-
-    window.localStorage.setItem("fullName", props.fullName);
-    window.localStorage.setItem("gender", props.gender);
-    window.localStorage.setItem("email", props.email);
-    window.localStorage.setItem("age", props.age);
-    window.localStorage.setItem("currentCountry", props.currentCountry);
-    window.localStorage.setItem("englishLevel", props.englishLevel);
-    window.localStorage.setItem("digitalToolsLevel", props.digitalToolsLevel);
-    window.localStorage.setItem("localLanguageLevel", props.localLanguageLevel);
-    window.localStorage.setItem(
-      "highestDegreeObtained",
-      props.highestDegreeObtained
-    );
-
-    window.localStorage.setItem(
-      "educationAndWorkBackground",
-      props.educationAndWorkBackground
-    );
-    window.localStorage.setItem(
-      "assessYourJobReadiness",
-      props.assessYourJobReadiness
-    );
-    window.localStorage.setItem(
-      "startYourOwnBusiness",
-      props.startYourOwnBusiness
-    );
-    window.localStorage.setItem("gdpr", props.gdpr);
-  },
-  //  @Todo find a way to fix the below validation or find a different way to valid form fields.
-  //  The issue is currently the valid is working and validating the form fields.
-  //  But then it stops the form from submitting
-  validationSchema: Yup.object().shape({
-    fullName: Yup.string()
-      .min(4)
-      .required(),
-    gender: Yup.string().required(),
-    email: Yup.string()
-      .email()
-      .required(),
-    age: Yup.number()
-      .min(2)
-      .required(),
-    currentCountry: Yup.string().required(),
-    englishLevel: Yup.string().required(),
-    digitalToolsLevel: Yup.string().required(),
-    localLanguageLevel: Yup.string().required(),
-    highestDegreeObtained: Yup.string().required(),
-    educationAndWorkBackground: Yup.string().required(),
-    assessYourJobReadiness: Yup.string().required(),
-    startYourOwnBusiness: Yup.string().required(),
-    lostDomainKnowledge: Yup.string().required(),
-    gdpr: Yup.string().required()
-  })
+    saveAndGoTo(values, steps.one, steps.result);
+  }
 })(FormData);
 
 export default FormikeComponent;
