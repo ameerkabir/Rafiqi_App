@@ -69,7 +69,6 @@ const FormData = ({
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.fullName === undefined ? "" : values.fullName}
-            required
           />
         </div>
         <div className="form-group col-md-4">
@@ -79,7 +78,6 @@ const FormData = ({
             component="select"
             className="form-control"
             id="gender"
-            required
           >
             <option value="Select your gender">Select Your Gender</option>
             <option value="male">Male</option>
@@ -90,7 +88,7 @@ const FormData = ({
         </div>
 
         <div className="form-group col-md-4  w-25">
-          <label htmlFor="email">Email Address *</label>
+          <label htmlFor="email">Email Address</label>
 
           <Field
             name="email"
@@ -101,7 +99,6 @@ const FormData = ({
             onBlur={handleBlur}
             value={values.email}
             touched={touched}
-            required
           />
         </div>
         <div className="form-group col-md-4 w-25">
@@ -114,7 +111,6 @@ const FormData = ({
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.age}
-            required
           />
         </div>
         <div className="form-group col-md-4">
@@ -170,7 +166,6 @@ const FormData = ({
             Digital tools level? (email,e-learning websites)
           </label>
           <Field
-            required
             name="digitalToolsLevel"
             component="select"
             className="form-control"
@@ -179,6 +174,7 @@ const FormData = ({
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.digitalToolsLevel}
+            required
           >
             <option value="1">1</option>
             <option value="2">2</option>
