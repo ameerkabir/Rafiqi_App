@@ -59,9 +59,10 @@ This will start the node server on port 4000, to test that your server works fin
 
 `git checkout -b 'name of the branch'`<br>
 `git status` <br>
-`git add 'name of the file(s) that you changed'` <br>
+`git add 'name of the file(s) that you changed'`<br>
 `git commit -m 'meaningful commit message that reflects the changes'` <br>
 `git push origin 'name of the branch'` <br>
+* try your best to write test for all the logic that you write.
 
 ### some times you want to get the latest changes from master in that case you can run
 
