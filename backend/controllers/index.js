@@ -15,19 +15,22 @@ const postData = (req, res) => {
 function fetchData(req) {
   var data = req.headers;
   return {
-    fullName: data.fullName,
+    fullName: data.fullname,
     age: data.age,
     gender: data.gender,
     email: data.email,
-    englishLevel: data.englishLevel,
-    localLanguageLevel: data.localLanguageLevel,
-    digitalToolsLevel: data.digitalToolsLevel,
-    highestDegreeObtained: data.highestDegreeObtained,
-    assessYourJobReadiness: data.assessYourJobReadiness,
+    englishLevel: data.englishlevel,
+    location: data.currentcountry,
+    localLanguageLevel: data.locallanguagelevel,
+    digitalToolsLevel: data.digitaltoolstevel,
+    highestDegreeObtained: data.highestdegreeobtained,
+    assessYourJobReadiness: data.assessyourjobreadiness,
     gdpr: data.gdpr,
     filledEntrepreneur : data.hasOwnProperty('startyourownbusiness'),
     isEntrepreneur: data.hasOwnProperty('startyourownbusiness') &&
-        data.startyourownbusiness === 'yes'
+        data.startyourownbusiness === 'yes',
+    filledLocation: data.hasOwnProperty('currentcountry'),
+
   }
 }
 
@@ -41,7 +44,9 @@ const resultData = (req, res) => {
       result = findInObject(result,{Theme : 'entrepreneurship and incubation'}, true);
     }
   }
-
+  if(user.filledLocation) {
+    result = findInObject(result,{Country : user.location});
+  }
   res.status(200).json({
     data: result
   });
@@ -52,9 +57,9 @@ function findInObject(data, searchParameter, exclude){
   return JSON.parse(JSON.stringify(data)).filter(function (parameter) {
     return Object.keys(searchParameter).every(function (key) {
       if (!exclude){
-        return parameter[key] === searchParameter[key];
+        return parameter[key] === searchParameter[key] ;
       } else {
-        return parameter[key] !== searchParameter[key];
+        return parameter[key]  !== searchParameter[key] ;
       }
     })
   })
