@@ -4,7 +4,7 @@ export const homepage = (req, res) => {
 };
 
 function fetchData(req) {
-  var data = req.headers;
+  const data = req.headers;
   return {
     fullName: data.fullname,
     age: data.age,
@@ -26,8 +26,8 @@ function fetchData(req) {
 }
 
 export const resultData = (req, res) => {
-  var result = findInObject(opportunities,{});
-  var user = fetchData(req);
+  let result = findInObject(opportunities,{});
+  let user = fetchData(req);
   if (user.filledEntrepreneur) {
     if(user.isEntrepreneur) {
       result = findInObject(result,{Theme : 'entrepreneurship and incubation'});
