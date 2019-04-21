@@ -1,15 +1,6 @@
-const opportunities = require('../helper/data.json');
-
-const homepage = (req, res) => {
+export const homepage = (req, res) => {
   console.log('what', req.body);
   res.status(200).json('This is The homepage');
-};
-
-const postData = (req, res) => {
-  console.log(req.body);
-  res.status(200).json({
-    data: req.body
-  });
 };
 
 function fetchData(req) {
@@ -34,7 +25,7 @@ function fetchData(req) {
   }
 }
 
-const resultData = (req, res) => {
+export const resultData = (req, res) => {
   var result = findInObject(opportunities,{});
   var user = fetchData(req);
   if (user.filledEntrepreneur) {
@@ -64,4 +55,3 @@ function findInObject(data, searchParameter, exclude){
     })
   })
 }
-module.exports = { homepage, postData, resultData };
