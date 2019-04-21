@@ -1,50 +1,32 @@
 {
-  "name": "Rafiqi_app",
+  "name": "millennium-center-server",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "Ameer",
-  "license": "MIT",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "npm run test:integration",
-    "test:integration": "nyc mocha --full-trace \"tests/**/*.test.js\" --timeout 999999 --exit"
+    "dev": "nodemon -w src --exec \"babel-node src/index.js\"",
+    "lint": "eslint src",
+    "lint:fix": "./node_modules/.bin/eslint --fix src"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@slack/client": "^4.8.0",
     "body-parser": "^1.18.3",
-    "csvtojson": "^2.0.8",
+    "compression": "^1.7.3",
+    "core-js": "2",
+    "cors": "^2.8.5",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
-    "morgan": "^1.9.1",
-    "nodemon": "^1.18.5",
-    "papaparse": "^4.6.2"
+    "lodash": "^4.17.11",
+    "nodemailer": "^5.0.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha ": "^5.2.0",
-    "nyc": "^13.1.0",
-    "sinon": "^7.1.1",
-    "supertest": "^3.3.0"
-  },
-  "nyc": {
-    "include": [
-      "app.js",
-      "server.js",
-      "controllers/*.js",
-      "handlers/*.js",
-      "helpers/*.js"
-    ],
-    "exclude": [
-      "node_modules/**"
-    ],
-    "extension": [
-      ".js"
-    ],
-    "reporter": [
-      "text",
-      "html"
-    ],
-    "sourceMap": true,
-    "instrument": true,
-    "all": true
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "nodemon": "^1.18.7"
   }
 }
