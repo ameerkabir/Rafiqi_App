@@ -1,5 +1,5 @@
 import {fetchData, findInObject} from "../helper";
-const opportunities = require('../helper/data.json');
+import opportunities from '../helper/data.json';
 
 export const homepage = (req, res) => {
   console.log('what', req.body);
