@@ -1,28 +1,23 @@
-import {fetchData, findInObject} from "../helper";
+import { fetchData, getEntrepreneurship } from '../helper';
 import opportunities from '../helper/data.json';
-
 export const homepage = (req, res) => {
-  console.log('what', req.body);
-  res.status(200).json('This is The homepage');
+  res.status(200).json('This is The Api');
 };
 
-
-export const resultData = (req, res) => {
-  let result = findInObject(opportunities,{});
-  let user = fetchData(req);
-  if(user.filledLocation) {
-    result = findInObject(result,{Country : user.location});
-  }
-
-  if (user.filledEntrepreneur && user.isEntrepreneur) {
-    result = findInObject(result,{Theme : 'entrepreneurship and incubation'});
-    res.status(200).json({
-    data: result
+export const resultData = async (req, res) => {
+  const { startYourOwnBusiness } = await req.body;
+  try {
+    if (startYourOwnBusiness) {
+      const response = await getEntrepreneurship(opportunities);
+      return res.status(200).json({
+        data: response
+      });
+    }
+    return res.json(400).json({
+      message:
+        'We could not find any  data for this search the provide information'
     });
-  } else {
-      res.status(400);
-      res.send('Sorry for the message, there is no matched opportunity');
+  } catch (e) {
+    res.send(e);
   }
 };
-
-
