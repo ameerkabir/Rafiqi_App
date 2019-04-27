@@ -42,7 +42,6 @@ export async function getEntrepreneurship(opportunities) {
     );
     return result;
   } catch (e) {
-    debugger;
     return 'parameter opportunities  is missing, Please call the function with data';
   }
 }
