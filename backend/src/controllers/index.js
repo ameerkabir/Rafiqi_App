@@ -2,7 +2,6 @@ import {fetchData, filterObject, filteredData} from "../helper";
 import opportunities from '../helper/data.json';
 
 export const homepage = (req, res) => {
-  console.log('Homepage:', req);
   res.status(200).json('This is The homepage');
 };
 
