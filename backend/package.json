@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src/index.js\"",
     "test": "mocha --require @babel/register",
-    "compile": "--presets  @babel/preset-env         --debug",
     "prepublish": "yarn run compile"
   },
   "author": "",
