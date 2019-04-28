@@ -47,19 +47,9 @@ export default class Steps extends Component {
       values: values,
       step: toStep
     });
-
-    this.postData();
+    await this.postData();
   };
   render() {
-    const url = "http://localhost:4000/search";
-    const dataToPost = axios.post(url, this.state.values, {
-      "Content-Type": "application/json"
-    });
-
-    console.log("----- results", this.state.results);
-    console.log("-----", dataToPost);
-    console.log("----- values", this.state.values);
-
     switch (this.state.step) {
       case steps.one:
         return <Forms saveAndGoTo={this.saveAndGoTo} />;

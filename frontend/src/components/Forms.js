@@ -335,25 +335,25 @@ const FormData = ({
       <div className="form-row align-items-center">
         <div className="col-md-3 pl-3">
           <RadioButtonGroup
-            id="startYOurOwnBusiness"
-            value={values.startYOurOwnBusiness}
+            id="startYourOwnBusiness"
+            value={values.startYourOwnBusiness}
           >
             <Field
               required
               component={RadioButton}
-              name="startYOurOwnBusiness"
+              name="startYourOwnBusiness"
               id="yes"
               label="Yes"
             />
             <Field
               required
               component={RadioButton}
-              name="startYOurOwnBusiness"
+              name="startYourOwnBusiness"
               id="no"
               label="No"
             />
           </RadioButtonGroup>
-          {touched && errors.startYOurOwnBusiness && (
+          {touched && errors.startYourOwnBusiness && (
             <p className="text-danger bold">This Field is a required Field</p>
           )}
         </div>
