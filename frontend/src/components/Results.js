@@ -21,7 +21,6 @@ const ListItem = styled.li`
 export default class Results extends Component {
   render() {
     const { data } = this.props.results;
-    console.log("props in result component", data);
     return (
       <Wrapper>
         {!data ? (

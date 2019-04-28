@@ -37,8 +37,6 @@ export default class Steps extends Component {
 
   postData = async values => {
     if (!values) return;
-    console.log("values of postdata func", values);
-
     try {
       const url = "http://localhost:4000/search";
       const dataToPost = await axios.post(url, values);
