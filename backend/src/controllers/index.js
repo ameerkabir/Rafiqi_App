@@ -19,6 +19,6 @@ export const resultData = async (req, res) => {
         'We could not find any  data for this search the provide information'
     });
   } catch (e) {
-    res.send(e);
+    console.log(e);
   }
 };
