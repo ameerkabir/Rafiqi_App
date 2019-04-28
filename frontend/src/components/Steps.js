@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Forms from "./Forms";
-import Home from "./Results";
+import Results from "./Results";
 export const steps = {
   one: 1,
   result: 2
@@ -16,28 +16,6 @@ export default class Steps extends Component {
       results: []
     };
   }
-
-  // @Todo
-  // create a function to post data const postData = () =>{
-  // const postData = await axios.post(`/data`, values);
-  // get the result of postData
-  // this.setState({results: postData})
-  // send props(results) to the results component
-  // loop over the results and show it as a numbered list
-  //}
-  postData = async () => {
-    const url = "http://localhost:4000/search";
-    const dataToPost = await axios.post(url, this.state.values, {
-      "Content-Type": "application/json"
-    });
-    const data = await dataToPost;
-    console.log("dataToPost", this.state.values);
-    debugger;
-    this.setState({
-      results: data
-    });
-  };
-
   async componentDidMount() {
     this.postData();
   }
@@ -56,29 +34,41 @@ export default class Steps extends Component {
       step: toStep
     });
   };
+
+  postData = async values => {
+    if (!values) return;
+    console.log("values of postdata func", values);
+
+    try {
+      const url = "http://localhost:4000/search";
+      const dataToPost = await axios.post(url, values);
+      debugger;
+      const data = await dataToPost;
+      this.setState({
+        results: data
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
   render() {
-    const url = "http://localhost:4000/search";
-    const dataToPost = axios.post(url, this.state.values, {
-      "Content-Type": "application/json"
-    });
-
-    console.log("----- results", this.state.results);
-    console.log("-----", dataToPost);
-    console.log("----- values", this.state.values);
-
     switch (this.state.step) {
       case steps.one:
-        return <Forms saveAndGoTo={this.saveAndGoTo} />;
+        return (
+          <Forms saveAndGoTo={this.saveAndGoTo} postData={this.postData} />
+        );
       case steps.result:
         return (
-          <Home
+          <Results
             values={this.state.values}
             saveAndGoTo={this.saveAndGoTo}
-            data={this.state.data}
+            results={this.state.results}
           />
         );
       default:
-        return <Home />;
+        return (
+          <Forms saveAndGoTo={this.saveAndGoTo} postData={this.postData} />
+        );
     }
   }
 }
