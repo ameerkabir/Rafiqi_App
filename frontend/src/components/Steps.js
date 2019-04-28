@@ -22,7 +22,6 @@ export default class Steps extends Component {
 
   saveAndGoTo = async (values, currentStep, toStep) => {
     toStep = steps.result;
-    const { step } = this.state;
     values = {
       ...this.state.values,
       [currentStep]: values,
