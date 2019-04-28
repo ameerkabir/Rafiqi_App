@@ -53,8 +53,7 @@ const FormData = ({
   values,
   errors,
   touched,
-  handleSubmit,
-  saveAndGoTo
+  handleSubmit
 }) => {
   return (
     <Form onSubmit={handleSubmit}>
@@ -335,25 +334,25 @@ const FormData = ({
       <div className="form-row align-items-center">
         <div className="col-md-3 pl-3">
           <RadioButtonGroup
-            id="startYOurOwnBusiness"
-            value={values.startYOurOwnBusiness}
+            id="startYourOwnBusiness"
+            value={values.startYourOwnBusiness}
           >
             <Field
               required
               component={RadioButton}
-              name="startYOurOwnBusiness"
+              name="startYourOwnBusiness"
               id="yes"
               label="Yes"
             />
             <Field
               required
               component={RadioButton}
-              name="startYOurOwnBusiness"
+              name="startYourOwnBusiness"
               id="no"
               label="No"
             />
           </RadioButtonGroup>
-          {touched && errors.startYOurOwnBusiness && (
+          {touched && errors.startYourOwnBusiness && (
             <p className="text-danger bold">This Field is a required Field</p>
           )}
         </div>
@@ -363,12 +362,10 @@ const FormData = ({
         <div className="col-md-3 pl-3">
           <label htmlFor="gdpr">
             <Field
-              required
               name="gdpr"
               type="checkbox"
               className="form-check-input"
               id="gdpr"
-              placeholder="gdpr"
               onChange={handleChange}
               onBlur={handleBlur}
               checked={values.gdpr}
@@ -389,25 +386,28 @@ const FormData = ({
   );
 };
 const FormikeComponent = withFormik({
-  mapPropsToStatus: () => ({
-    fullName: "",
-    gender: "",
-    email: "",
-    age: "",
-    currentCountry: "",
-    englishLevel: 1,
-    digitalToolsLevel: 1,
-    localLanguageLevel: "",
-    highestDegreeObtained: "",
-    educationAndWorkBackground: "",
-    assessYourJobReadiness: "",
-    startYourOwnBusiness: false,
-    gdpr: false
-  }),
+  mapPropsToStatus: () => {
+    return {
+      fullName: "",
+      gender: "",
+      email: "",
+      age: "",
+      currentCountry: "",
+      englishLevel: 1,
+      digitalToolsLevel: 1,
+      localLanguageLevel: "",
+      highestDegreeObtained: "",
+      educationAndWorkBackground: "",
+      assessYourJobReadiness: "",
+      startYourOwnBusiness: false,
+      gdpr: false
+    };
+  },
 
   handleSubmit: (values, actions) => {
-    const { saveAndGoTo } = actions.props;
+    const { saveAndGoTo, postData } = actions.props;
     saveAndGoTo(values, steps.one, steps.result);
+    postData(values);
   }
 })(FormData);
 
