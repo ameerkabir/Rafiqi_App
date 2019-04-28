@@ -5,6 +5,7 @@ export const homepage = (req, res) => {
 };
 
 export const resultData = async (req, res) => {
+  console.log(req.body);
   const { startYourOwnBusiness } = await req.body;
   try {
     if (startYourOwnBusiness) {

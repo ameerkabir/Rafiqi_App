@@ -25,13 +25,18 @@ export default class Steps extends Component {
   // send props(results) to the results component
   // loop over the results and show it as a numbered list
   //}
-  async getData(data) {
+  postData = async data => {
+    const url = "localhost:4000/search";
+    const dataToPost = await axios.post(url, this.state.values);
+    console.log(dataToPost);
     this.setState({
-      data: data
+      result: dataToPost
     });
-  }
+  };
 
-  async componentDidMount() {}
+  async componentDidMount() {
+    this.postData();
+  }
 
   saveAndGoTo = async (values, currentStep, toStep) => {
     toStep = steps.result;
