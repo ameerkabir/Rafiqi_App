@@ -25,12 +25,16 @@ export default class Steps extends Component {
   // send props(results) to the results component
   // loop over the results and show it as a numbered list
   //}
-  postData = async data => {
-    const url = "localhost:4000/search";
-    const dataToPost = await axios.post(url, this.state.values);
-    console.log(dataToPost);
+  postData = async () => {
+    const url = "http://localhost:4000/search";
+    const dataToPost = await axios.post(url, this.state.values, {
+      "Content-Type": "application/json"
+    });
+    const data = await dataToPost;
+    console.log("dataToPost", this.state.values);
+    debugger;
     this.setState({
-      result: dataToPost
+      results: data
     });
   };
 
@@ -51,11 +55,17 @@ export default class Steps extends Component {
       values: values,
       step: toStep
     });
-    const postData = await axios.post(`/data`, values);
-    debugger;
-    const dataToShow = await postData;
   };
   render() {
+    const url = "http://localhost:4000/search";
+    const dataToPost = axios.post(url, this.state.values, {
+      "Content-Type": "application/json"
+    });
+
+    console.log("----- results", this.state.results);
+    console.log("-----", dataToPost);
+    console.log("----- values", this.state.values);
+
     switch (this.state.step) {
       case steps.one:
         return <Forms saveAndGoTo={this.saveAndGoTo} />;
