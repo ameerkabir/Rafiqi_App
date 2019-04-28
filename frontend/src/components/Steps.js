@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Forms from "./Forms";
-import Home from "./Home";
+import Home from "./Results";
 export const steps = {
   one: 1,
   result: 2
@@ -12,9 +12,19 @@ export default class Steps extends Component {
     super(props);
     this.state = {
       step: steps.one,
-      values: []
+      values: [],
+      results: []
     };
   }
+
+  // @Todo
+  // create a function to post data const postData = () =>{
+  // const postData = await axios.post(`/data`, values);
+  // get the result of postData
+  // this.setState({results: postData})
+  // send props(results) to the results component
+  // loop over the results and show it as a numbered list
+  //}
   async getData(data) {
     this.setState({
       data: data
@@ -22,6 +32,7 @@ export default class Steps extends Component {
   }
 
   async componentDidMount() {}
+
   saveAndGoTo = async (values, currentStep, toStep) => {
     toStep = steps.result;
     const { step } = this.state;
