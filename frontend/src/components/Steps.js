@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Forms from "./Forms";
-import Home from "./Home";
+import Results from "./Results";
 export const steps = {
   one: 1,
   result: 2
@@ -12,19 +12,16 @@ export default class Steps extends Component {
     super(props);
     this.state = {
       step: steps.one,
-      values: []
+      values: [],
+      results: []
     };
   }
-  async getData(data) {
-    this.setState({
-      data: data
-    });
+  async componentDidMount() {
+    this.postData();
   }
 
-  async componentDidMount() {}
   saveAndGoTo = async (values, currentStep, toStep) => {
     toStep = steps.result;
-    const { step } = this.state;
     values = {
       ...this.state.values,
       [currentStep]: values,
@@ -35,24 +32,40 @@ export default class Steps extends Component {
       values: values,
       step: toStep
     });
-    const postData = await axios.post(`/data`, values);
-    debugger;
-    const dataToShow = await postData;
+  };
+
+  postData = async values => {
+    if (!values) return;
+    try {
+      const url = "http://localhost:4000/search";
+      const dataToPost = await axios.post(url, values);
+      debugger;
+      const data = await dataToPost;
+      this.setState({
+        results: data
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
   render() {
     switch (this.state.step) {
       case steps.one:
-        return <Forms saveAndGoTo={this.saveAndGoTo} />;
+        return (
+          <Forms saveAndGoTo={this.saveAndGoTo} postData={this.postData} />
+        );
       case steps.result:
         return (
-          <Home
+          <Results
             values={this.state.values}
             saveAndGoTo={this.saveAndGoTo}
-            data={this.state.data}
+            results={this.state.results}
           />
         );
       default:
-        return <Home />;
+        return (
+          <Forms saveAndGoTo={this.saveAndGoTo} postData={this.postData} />
+        );
     }
   }
 }
