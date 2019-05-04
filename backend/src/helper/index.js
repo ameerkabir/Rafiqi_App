@@ -1,113 +1,165 @@
-export function filterObject(data, searchParameter, exclude){
-    exclude = exclude || false;
-    return JSON.parse(JSON.stringify(data)).filter(function (parameter) {
-        return Object.keys(searchParameter).every(function (key) {
-            if (!exclude){
-                return parameter[key] === searchParameter[key] ;
-            } else {
-                return parameter[key]  !== searchParameter[key] ;
-            }
-        })
-    })
-}
+import * as R from 'ramda';
 
-export function filterByRelation(data, searchParameter, relation){
-    return JSON.parse(JSON.stringify(data)).filter(function (parameter) {
-        return Object.keys(searchParameter).every(function (key) {
-            return relation(parameter[key], searchParameter[key]);
-        })
-    })
-}
+export async function fetchData(req, opportunities) {
+  const {
+    fullName,
+    gender,
+    email,
+    age,
+    currentCountry,
+    englishLevel,
+    digitalToolsLevel,
+    localLanguageLevel,
+    highestDegreeObtained,
+    educationAndWorkBackground,
+    assessYourJobReadiness,
+    startYourOwnBusiness,
+    gdpr
+  } = await req.body;
 
-export function mergeObject(data, searchParameter1, searchParameter2) {
-    let resultsToMerge = filterObject(data, searchParameter1);
-    data = filterObject(data, searchParameter2);
-    data = data.concat(resultsToMerge);
-    return data;
-}
+  let response = await getCountry(opportunities, currentCountry);
 
-export function fetchData(req) {
-    const data = req.body;
-    return {
-        fullName: data.fullname,
-        age: data.age,
-        gender: data.gender,
-        email: data.email,
-        englishLevel: data.englishlevel,
-        location: data.currentcountry,
-        localLanguageLevel: data.locallanguagelevel,
-        digitalToolsLevel: data.digitaltoolstevel,
-        highestDegreeObtained: data.highestdegreeobtained,
-        background: data.educationandworkbackground,
-        JobReadinessLevel: data.assessyourjobreadiness,
-        gdpr: data.gdpr,
-        filledEntrepreneur : data.hasOwnProperty('startyourownbusiness'),
-        isEntrepreneur: data.startyourownbusiness === 'yes',
-        filledLocation: data.hasOwnProperty('currentcountry'),
+  if (startYourOwnBusiness === 'yes') {
+    return await getEntrepreneurship(response);
+  }
+  response = await excludeEntrepreneurship(response);
+
+  // We have to split the responses to branches here, because at a later time we will have to return to present response
+  const jobBranch = await getJob(response);
+  const eduBranch = await getEducation(response);
+  const trainBranch = await getTraining(response);
+
+  const localJobs = await getLocalJobs(jobBranch, assessYourJobReadiness, educationAndWorkBackground);
+
+  if(localJobs.length) {
+    const sufficientLanguage = await filterByLanguage(localJobs, localLanguageLevel, englishLevel);
+    if(sufficientLanguage.length) {
+      return sufficientLanguage;
     }
-}
+    return await getLanguageEducation(response);
+  }
 
-export function searchFor(user) {
-    return {
-        enrepreneur: {Theme: 'entrepreneurship and incubation'},
-        country: {Country : user.location},
-        global: {Country : 'Global'},
-        job: {Category : 'Job'},
-        edu: {Category : 'University Degree'},
-        tra: {Category : 'Training'},
-        ctra: {Category: 'Certified Training'},
-        "onsite": {'Mode of Delivery': "onsite"},
-        hybrid: {"Mode of Delivery": "hybrid"},
-        jobLevel: {"Level": user.JobReadinessLevel},
-        locLevel: {"local_lan_requirements": user.localLanguageLevel},
-        engLevel: {"en_requirements": user.englishLevel},
-        background: {"Cluster nb": user.background},
+  const onlineJobs = await getOnlineJobs(jobBranch, assessYourJobReadiness, educationAndWorkBackground);
+
+  if(onlineJobs.length) {
+    const sufficientDigitalLiteracy = await filterByDigitalLiteracy(onlineJobs, digitalToolsLevel);
+    if(sufficientDigitalLiteracy.length) {
+      const sufficientEnglish = await filterByEnglish(sufficientDigitalLiteracy, englishLevel);
+      if(sufficientEnglish.length) {
+        return sufficientEnglish;
+      }
+      return await getEnglishEducation(response);
     }
+    return await getDigitalEducation(response);
+  }
+
+  return [];
 }
 
-
-export function filteredData(user, result) {
-
-    // First filter the location of the user - Global OR country
-    if(user.filledLocation)
-        result = mergeObject(result, searchFor(user).country, searchFor(user).global);
-
-    // Filter interest in entrepreneurship
-    if (user.filledEntrepreneur)
-        if(user.isEntrepreneur) {
-            result = filterObject(result, searchFor(user).enrepreneur);
-            return result; // Exit from function
-        } else {
-            result = filterObject(result, searchFor(user).enrepreneur, true);
-        }
-
-    // Split result to branches by category
-    let jobBranch = filterObject(result, searchFor(user).job);
-    let eduBranch = filterObject(result, searchFor(user).edu);
-    let trainBranch = filterObject(result, searchFor(user).tra);
-
-    // set mode of delivery, whether onsite or hybrid
-    jobBranch = mergeObject(jobBranch, searchFor(user).hybrid, searchFor(user).onsite);
-
-    // Filter, level <= applicant job readiness level
-    jobBranch = filterByRelation(jobBranch, searchFor(user).jobLevel, (dataVal, searchVal) => dataVal <= searchVal);
-
-    // Filter, language levels <= candidate language levels.
-    // English Language Levels
-    jobBranch = filterByRelation(jobBranch, searchFor(user).engLevel, (dataVal, searchVal) => dataVal <= searchVal);
-    // Local Language Levels
-    jobBranch = filterByRelation(jobBranch, searchFor(user).locLevel, (dataVal, searchVal) => dataVal <= searchVal);
-
-    // Filter which background matches their work background
-    jobBranch = filterObject(jobBranch, searchFor(user).background);
-
-    //if(jobBranch.length > 0)
-    result = jobBranch;
-    //else if(eduBranch.length > 0)
-    //  result = eduBranch;
-    //else
-    //  result = trainBranch;
-
-    return result;
+export async function filterResponse(opportunities, relation, key, value, exclude = false) {
+  try {
+    const result = await R.filter(
+        relation(key, value),
+        opportunities
+    );
+    if(exclude)
+      return R.difference(opportunities, result);
+    else
+      return result;
+  } catch (e) {
+    console.error(e);
+    return 'parameter opportunities are missing, Please call the function with data.';
+  }
 }
 
+async function getCountry(opportunities, countryQuery) {
+  const country = await filterResponse(opportunities, R.propEq, 'Country', countryQuery);
+  const global = await filterResponse(opportunities, R.propEq, 'Country', 'Global');
+  return Object.assign(global, country);
+}
+
+async function getEntrepreneurship(opportunities) {
+  return await filterResponse(opportunities,  R.propEq , 'Theme', 'entrepreneurship and incubation');
+}
+
+async function excludeEntrepreneurship(opportunities) {
+  return await filterResponse(opportunities, R.propEq, 'Theme', 'entrepreneurship and incubation', true);
+}
+
+async function getJob(opportunities) {
+  return await filterResponse(opportunities, R.propEq, 'Category', 'Job');
+}
+
+async function getEducation(opportunities) {
+  return await filterResponse(opportunities, R.propEq, 'Category', 'University Degree');
+}
+
+async function getTraining(opportunities) {
+  const training = await filterResponse(opportunities, R.propEq, 'Category', 'Training');
+  const certified = await filterResponse(opportunities, R.propEq, 'Category', 'Certified Training');
+  return Object.assign(training, certified);
+}
+
+async function getLocalJobs(opportunities, applicantLevel, background) {
+  const criteria = (k, v) => R.propSatisfies(R.gte(v), k);
+  const localJobs = await getLocalDelivery(opportunities);
+  let suitableJobs = await filterResponse(localJobs, criteria, 'Level', applicantLevel);
+  if(background)
+    suitableJobs = await getSameBackground(suitableJobs, background);
+  return suitableJobs;
+}
+
+async function getSameBackground(opportunities, cluster) {
+  const background = await filterResponse(opportunities, (k, v) => R.propSatisfies(R.equals(v), k), 'Cluster nb', cluster);
+  const notApplicable = await filterResponse(opportunities, R.propEq, 'Cluster nb', 'not applicable')
+  return Object.assign(notApplicable, background);
+}
+
+async function getOnlineJobs(opportunities, applicantLevel, background) {
+  const criteria = (k, v) => R.propSatisfies(R.gte(v), k);
+  const onlineJobs = await filterResponse(opportunities, R.propEq, 'Mode of Delivery', 'online');
+  let suitableJobs = await filterResponse(onlineJobs, criteria, 'Level', applicantLevel);
+  if(background)
+    suitableJobs = await getSameBackground(suitableJobs, background);
+  return suitableJobs;
+}
+
+async function getLanguageEducation(opportunities) {
+  const languageEducation = await filterResponse(opportunities, R.propEq, 'Theme', 'language education');
+  const integration = await filterResponse(opportunities, R.propEq, 'Theme', 'integration');
+  return Object.assign(integration, languageEducation);
+}
+
+async function filterByLanguage(opportunities, localLanguageLevel, englishLevel) {
+  const criteria = (k, v) => R.propSatisfies(R.gte(v), k);
+  let suitableByLanguage = await filterResponse(opportunities, criteria, 'local_lan_requirements', localLanguageLevel);
+  suitableByLanguage = await filterResponse(suitableByLanguage, criteria, 'en_requirements', englishLevel);
+  return suitableByLanguage;
+}
+
+async function filterByEnglish(opportunities, englishLevel) {
+  const minimumEnglishLevel = 7;
+  const criteria = (k, v) => R.propSatisfies(R.gte(minimumEnglishLevel), k);
+  return await filterResponse(opportunities, criteria, 'en_requirements', englishLevel);
+}
+
+async function filterByDigitalLiteracy(opportunities, digitalLiteracyLevel) {
+  const minimumDigitalLiteracyLevel = 7;
+  const criteria = (k, v) => R.propSatisfies(R.gte(minimumDigitalLiteracyLevel), k);
+  return  await filterResponse(opportunities, criteria, 'Level', digitalLiteracyLevel);
+}
+
+async function getEnglishEducation(opportunities) {
+  const languageEducation = await filterResponse(opportunities, R.propEq, 'Theme', 'language education');
+  const integration = await filterResponse(opportunities, R.propEq, 'Theme', 'integration');
+  return Object.assign(integration, languageEducation);
+}
+
+async function getDigitalEducation(opportunities) {
+  const localEducation = await getLocalDelivery(opportunities);
+  return await filterResponse(localEducation, R.propEq, 'Theme', 'Digital education');
+}
+
+async function getLocalDelivery(opportunities) {
+  return await filterResponse(opportunities, R.propEq, 'Mode of Delivery', 'online', true);
+}

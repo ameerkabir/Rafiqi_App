@@ -1,25 +1,26 @@
-import {fetchData, filterObject, filteredData} from "../helper";
+import {fetchData} from '../helper';
 import opportunities from '../helper/data.json';
 
 export const homepage = (req, res) => {
-  res.status(200).json('This is The homepage');
+  res.status(200).json('This is The Api');
 };
 
-export const resultData = (req, res) => {
-  console.log('Request:', req.query);
+export const resultData = async (req, res) => {
 
-  let result = filterObject(opportunities,{});
-  let user = fetchData(req);
-  result = filteredData(user, result);
+  try {
+    const response = await fetchData(req, opportunities);
 
-  if(result.length > 0) {
-    console.log(result.length, 'Results Found.');
-    res.status(200).json({
-      data: result
-    });
-  } else {
-    console.log('No Results Found.');
-    res.status(400);
-    res.send('Sorry for the message, there is no matched opportunity');
+    if(response.length) {
+      return res.status(200).json({
+        data: response
+      });
+    } else {
+      return res.status(400).json({
+        message:
+            'We could not find any data for this search to provide any information'
+      });
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
