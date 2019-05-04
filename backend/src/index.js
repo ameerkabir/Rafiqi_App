@@ -3,6 +3,8 @@ import cors from 'cors';
 import compression from 'compression';
 import bodyParser from 'body-parser';
 import api from './routes/index';
+// import connectToDb from './db';
+
 function startAPI() {
   const app = express()
     .use(cors())
@@ -14,6 +16,9 @@ function startAPI() {
   const server = app.listen(4000 || config.port, () =>
     console.log(`Listening on http://localhost:${server.address().port}`)
   );
+  // connectToDb();
+
   return app;
 }
 startAPI();
+
