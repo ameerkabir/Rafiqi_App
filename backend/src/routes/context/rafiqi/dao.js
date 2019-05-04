@@ -1,14 +1,13 @@
-// import Dao from '../../../lib/dao';
-// import ApplicantProgress from './schema';
+import Dao from '../../../lib/dao';
+import OpportunitiesModel from './schema';
 
-// export default class ApplicantProgressDao extends Dao {
-//   constructor() {
-//     super(ApplicantProgress);
-//   }
+export default class OpportunitiesModelDao extends Dao {
+  constructor() {
+    super(OpportunitiesModel);
+  }
 
-//   async create(set) {
-//     const applicantProgress = new ApplicantProgress(set);
-//     return applicantProgress.save();
-//   }
-// }
-//       o_o
+  async create(set) {
+    const opportunitiesModel = new OpportunitiesModel(set);
+    return opportunitiesModel.save();
+  }
+}
