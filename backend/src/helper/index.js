@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import {propEq, filter, gte, difference, propSatisfies} from 'ramda';
 
 export async function fetchData(req, opportunities) {
   const {
@@ -42,11 +42,9 @@ export async function fetchData(req, opportunities) {
   const onlineJobs = await getOnlineJobs(jobBranch, assessYourJobReadiness, educationAndWorkBackground);
 
   if(onlineJobs.length) {
-    const sufficientDigitalLiteracy = await filterByDigitalLiteracy(onlineJobs, digitalToolsLevel);
-    if(sufficientDigitalLiteracy.length) {
-      const sufficientEnglish = await filterByEnglish(sufficientDigitalLiteracy, englishLevel);
-      if(sufficientEnglish.length) {
-        return sufficientEnglish;
+    if(digitalToolsLevel >= 7) {
+      if(englishLevel >= 7 ){
+        return onlineJobs;
       }
       return await getEnglishEducation(response);
     }
@@ -58,12 +56,12 @@ export async function fetchData(req, opportunities) {
 
 export async function filterResponse(opportunities, relation, key, value, exclude = false) {
   try {
-    const result = await R.filter(
+    const result = await filter(
         relation(key, value),
         opportunities
     );
     if(exclude)
-      return R.difference(opportunities, result);
+      return difference(opportunities, result);
     else
       return result;
   } catch (e) {
@@ -73,35 +71,35 @@ export async function filterResponse(opportunities, relation, key, value, exclud
 }
 
 async function getCountry(opportunities, countryQuery) {
-  const country = await filterResponse(opportunities, R.propEq, 'Country', countryQuery);
-  const global = await filterResponse(opportunities, R.propEq, 'Country', 'Global');
+  const country = await filterResponse(opportunities, propEq, 'Country', countryQuery);
+  const global = await filterResponse(opportunities, propEq, 'Country', 'Global');
   return Object.assign(global, country);
 }
 
 async function getEntrepreneurship(opportunities) {
-  return await filterResponse(opportunities,  R.propEq , 'Theme', 'entrepreneurship and incubation');
+  return await filterResponse(opportunities,  propEq , 'Theme', 'entrepreneurship and incubation');
 }
 
 async function excludeEntrepreneurship(opportunities) {
-  return await filterResponse(opportunities, R.propEq, 'Theme', 'entrepreneurship and incubation', true);
+  return await filterResponse(opportunities, propEq, 'Theme', 'entrepreneurship and incubation', true);
 }
 
 async function getJob(opportunities) {
-  return await filterResponse(opportunities, R.propEq, 'Category', 'Job');
+  return await filterResponse(opportunities, propEq, 'Category', 'Job');
 }
 
 async function getEducation(opportunities) {
-  return await filterResponse(opportunities, R.propEq, 'Category', 'University Degree');
+  return await filterResponse(opportunities, propEq, 'Category', 'University Degree');
 }
 
 async function getTraining(opportunities) {
-  const training = await filterResponse(opportunities, R.propEq, 'Category', 'Training');
-  const certified = await filterResponse(opportunities, R.propEq, 'Category', 'Certified Training');
+  const training = await filterResponse(opportunities, propEq, 'Category', 'Training');
+  const certified = await filterResponse(opportunities, propEq, 'Category', 'Certified Training');
   return Object.assign(training, certified);
 }
 
 async function getLocalJobs(opportunities, applicantLevel, background) {
-  const criteria = (k, v) => R.propSatisfies(R.gte(v), k);
+  const criteria = (k, v) => propSatisfies(gte(v), k);
   const localJobs = await getLocalDelivery(opportunities);
   let suitableJobs = await filterResponse(localJobs, criteria, 'Level', applicantLevel);
   if(background)
@@ -110,14 +108,14 @@ async function getLocalJobs(opportunities, applicantLevel, background) {
 }
 
 async function getSameBackground(opportunities, cluster) {
-  const background = await filterResponse(opportunities, (k, v) => R.propSatisfies(R.equals(v), k), 'Cluster nb', cluster);
-  const notApplicable = await filterResponse(opportunities, R.propEq, 'Cluster nb', 'not applicable')
+  const background = await filterResponse(opportunities, (k, v) => propSatisfies(equals(v), k), 'Cluster nb', cluster);
+  const notApplicable = await filterResponse(opportunities, propEq, 'Cluster nb', 'not applicable')
   return Object.assign(notApplicable, background);
 }
 
 async function getOnlineJobs(opportunities, applicantLevel, background) {
-  const criteria = (k, v) => R.propSatisfies(R.gte(v), k);
-  const onlineJobs = await filterResponse(opportunities, R.propEq, 'Mode of Delivery', 'online');
+  const criteria = (k, v) => propSatisfies(gte(v), k);
+  const onlineJobs = await filterResponse(opportunities, propEq, 'Mode of Delivery', 'online');
   let suitableJobs = await filterResponse(onlineJobs, criteria, 'Level', applicantLevel);
   if(background)
     suitableJobs = await getSameBackground(suitableJobs, background);
@@ -125,41 +123,29 @@ async function getOnlineJobs(opportunities, applicantLevel, background) {
 }
 
 async function getLanguageEducation(opportunities) {
-  const languageEducation = await filterResponse(opportunities, R.propEq, 'Theme', 'language education');
-  const integration = await filterResponse(opportunities, R.propEq, 'Theme', 'integration');
+  const languageEducation = await filterResponse(opportunities, propEq, 'Theme', 'language education');
+  const integration = await filterResponse(opportunities, propEq, 'Theme', 'integration');
   return Object.assign(integration, languageEducation);
 }
 
 async function filterByLanguage(opportunities, localLanguageLevel, englishLevel) {
-  const criteria = (k, v) => R.propSatisfies(R.gte(v), k);
+  const criteria = (k, v) => propSatisfies(gte(v), k);
   let suitableByLanguage = await filterResponse(opportunities, criteria, 'local_lan_requirements', localLanguageLevel);
   suitableByLanguage = await filterResponse(suitableByLanguage, criteria, 'en_requirements', englishLevel);
   return suitableByLanguage;
 }
 
-async function filterByEnglish(opportunities, englishLevel) {
-  const minimumEnglishLevel = 7;
-  const criteria = (k, v) => R.propSatisfies(R.gte(minimumEnglishLevel), k);
-  return await filterResponse(opportunities, criteria, 'en_requirements', englishLevel);
-}
-
-async function filterByDigitalLiteracy(opportunities, digitalLiteracyLevel) {
-  const minimumDigitalLiteracyLevel = 7;
-  const criteria = (k, v) => R.propSatisfies(R.gte(minimumDigitalLiteracyLevel), k);
-  return  await filterResponse(opportunities, criteria, 'Level', digitalLiteracyLevel);
-}
-
 async function getEnglishEducation(opportunities) {
-  const languageEducation = await filterResponse(opportunities, R.propEq, 'Theme', 'language education');
-  const integration = await filterResponse(opportunities, R.propEq, 'Theme', 'integration');
+  const languageEducation = await filterResponse(opportunities, propEq, 'Theme', 'language education');
+  const integration = await filterResponse(opportunities, propEq, 'Theme', 'integration');
   return Object.assign(integration, languageEducation);
 }
 
 async function getDigitalEducation(opportunities) {
   const localEducation = await getLocalDelivery(opportunities);
-  return await filterResponse(localEducation, R.propEq, 'Theme', 'Digital education');
+  return await filterResponse(localEducation, propEq, 'Theme', 'Digital education');
 }
 
 async function getLocalDelivery(opportunities) {
-  return await filterResponse(opportunities, R.propEq, 'Mode of Delivery', 'online', true);
+  return await filterResponse(opportunities, propEq, 'Mode of Delivery', 'online', true);
 }
