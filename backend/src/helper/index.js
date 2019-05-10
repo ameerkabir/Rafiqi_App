@@ -57,7 +57,7 @@ export async function fetchData(req, opportunities) {
 export async function filterResponse(opportunities, relation, key, value, exclude = false) {
   try {
     const result = await filter(
-        relation(key, value),
+        relation(key.toLowerCase(), value),
         opportunities
     );
     if(exclude)
