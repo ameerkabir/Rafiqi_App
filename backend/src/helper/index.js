@@ -115,7 +115,7 @@ async function getSameBackground(opportunities, cluster) {
 
 async function getOnlineJobs(opportunities, applicantLevel, background) {
   const criteria = (k, v) => propSatisfies(gte(v), k);
-  const onlineJobs = await filterResponse(opportunities, propEq, 'Mode of Delivery', 'online');
+  const onlineJobs = await filterResponse(opportunities, propEq, 'Mode_of_Delivery', 'online');
   let suitableJobs = await filterResponse(onlineJobs, criteria, 'Level', applicantLevel);
   if(background)
     suitableJobs = await getSameBackground(suitableJobs, background);
@@ -147,5 +147,5 @@ async function getDigitalEducation(opportunities) {
 }
 
 async function getLocalDelivery(opportunities) {
-  return await filterResponse(opportunities, propEq, 'Mode of Delivery', 'online', true);
+  return await filterResponse(opportunities, propEq, 'Mode_of_Delivery', 'online', true);
 }
