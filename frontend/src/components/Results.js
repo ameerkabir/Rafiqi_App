@@ -44,6 +44,7 @@ export default class Results extends Component {
                       } provided by ${
                         item.opportunity_name
                       } and delivered in  ${item.mode_of_delivery} mode. `}
+                      please register{" "}
                       <a
                         rel="noopener noreferrer"
                         target="_blank"
