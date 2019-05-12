@@ -13,7 +13,7 @@ export default class Steps extends Component {
     this.state = {
       step: steps.one,
       values: [],
-      results: []
+      results: {}
     };
   }
   async componentDidMount() {
