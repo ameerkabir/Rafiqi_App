@@ -34,17 +34,18 @@ export default class Results extends Component {
               <div>
                 Based on our lookup, we suggest the following opportunities:
               </div>
+              <br />
 
               <ul>
                 {data.data.map(item => {
                   return (
                     <ListItem>
-                      {`A ${item.category} in ${
-                        item.city === "any" ? "globally" : item.city
-                      } provided by ${
+                      {`A ${item.category} in ${item.theme} ${
+                        item.city === "any" ? "" : `in ${item.city}`
+                      } provided by  ${
                         item.opportunity_name
-                      } and delivered in  ${item.mode_of_delivery} mode. `}
-                      please register{" "}
+                      } and delivered in an  ${item.mode_of_delivery} mode. `}
+                      To subscribe please register{" "}
                       <a
                         rel="noopener noreferrer"
                         target="_blank"

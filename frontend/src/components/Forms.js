@@ -231,7 +231,7 @@ const FormData = ({
               required
               component={RadioButton}
               name="highestDegreeObtained"
-              id="BachelorDegree"
+              id="bachelorDegree"
               label="Bachelor degree"
               className="form-check-label ml-4"
             />
