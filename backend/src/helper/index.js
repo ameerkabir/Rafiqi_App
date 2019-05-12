@@ -108,8 +108,8 @@ async function getLocalJobs(opportunities, applicantLevel, background) {
 }
 
 async function getSameBackground(opportunities, cluster) {
-  const background = await filterResponse(opportunities, (k, v) => propSatisfies(equals(v), k), 'Cluster nb', cluster);
-  const notApplicable = await filterResponse(opportunities, propEq, 'Cluster nb', 'not applicable')
+  const background = await filterResponse(opportunities, (k, v) => propSatisfies(equals(v), k), 'Cluster_nb', cluster);
+  const notApplicable = await filterResponse(opportunities, propEq, 'Cluster_nb', 'not applicable');
   return Object.assign(notApplicable, background);
 }
 
