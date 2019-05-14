@@ -38,6 +38,7 @@ export async function fetchData(req, opportunities) {
     }
     return await getLanguageEducation(response);
   }
+  // couldn't find any local jobs opportunities
 
   const onlineJobs = await getOnlineJobs(jobBranch, assessYourJobReadiness, educationAndWorkBackground);
 
@@ -50,6 +51,44 @@ export async function fetchData(req, opportunities) {
     }
     return await getDigitalEducation(response);
   }
+  // couldn't find any online jobs opportunities
+
+  if(highestDegreeObtained === 'none') {
+    return await getBachelorDegree(eduBranch);
+  } else {
+    const trainingAndEducation = Object.assign(eduBranch, trainBranch);
+    const localTrainAndEdu = await getLocalDelivery(trainingAndEducation);
+    if(localTrainAndEdu.length) {
+      const sufficientLanguage = await filterByLanguage(localTrainAndEdu, localLanguageLevel, englishLevel);
+      if(sufficientLanguage.length) {
+        const closestBackground = await getClosestResults(sufficientLanguage);
+        if(closestBackground.length) {
+          return closestBackground;
+        } else {
+          return await getBeginnerTraining(response);
+        }
+      } else {
+        return await getLanguageEducation(response);
+      }
+    } else {
+      const onlineTrainAndEdu = await getOnlineDelivery(trainingAndEducation);
+      if(onlineTrainAndEdu.length) {
+        if(digitalToolsLevel >= 7) {
+          if(englishLevel >= 7 ){
+            const closestBackground = await getClosestResults(onlineTrainAndEdu);
+            if(closestBackground.length) {
+              return closestBackground;
+            } else {
+              return await getBeginnerTraining(response);
+            }
+          }
+          return await getEnglishEducation(response);
+        }
+        return await getDigitalEducation(response);
+      }
+    }
+  }
+  // couldn't find any training and education opportunities
 
   return [];
 }
@@ -115,7 +154,7 @@ async function getSameBackground(opportunities, cluster) {
 
 async function getOnlineJobs(opportunities, applicantLevel, background) {
   const criteria = (k, v) => propSatisfies(gte(v), k);
-  const onlineJobs = await filterResponse(opportunities, propEq, 'mode_of_delivery', 'online');
+  const onlineJobs = await getOnlineDelivery(opportunities);
   let suitableJobs = await filterResponse(onlineJobs, criteria, 'level', applicantLevel);
   if(background)
     suitableJobs = await getSameBackground(suitableJobs, background);
@@ -148,4 +187,31 @@ async function getDigitalEducation(opportunities) {
 
 async function getLocalDelivery(opportunities) {
   return await filterResponse(opportunities, propEq, 'mode_of_delivery', 'online', true);
+}
+
+async function getOnlineDelivery(opportunities) {
+  return await filterResponse(opportunities, propEq, 'mode_of_delivery', 'online');
+}
+
+async function getBachelorDegree(education) {
+  return await await getBeginnerLevel(education);
+}
+
+async function getBeginnerTraining(opportunities) {
+  const training = await getTraining(opportunities);
+  return await getBeginnerLevel(training);
+}
+
+async function getBeginnerLevel(opportunities) {
+  return await filterResponse(opportunities, propEq, 'level', 1);
+}
+
+async function excludeBeginnerLevel(opportunities) {
+  return await filterResponse(opportunities, propEq, 'level', 1, true);
+}
+
+async function getClosestResults(opportunities) {
+  const notBeginnerResults = await excludeBeginnerLevel(opportunities);
+  // TODO Filter by the distance function that will be added later.
+  return notBeginnerResults;
 }
