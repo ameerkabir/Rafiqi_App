@@ -22,6 +22,9 @@ export const resultData = async (req, res) => {
   try {
     const opportunities = await RafiqiContext.findAll();
     const response = await fetchData(req, opportunities);
+    for(let r of response) {
+      console.log("("+r.country+") "+r.mode_of_delivery+" "+r.category+"-"+r.theme+": "+r.opportunity_name+" - "+r.info); //todo del
+    }
     if(response.length) {
       return res.status(200).json({
         data: response

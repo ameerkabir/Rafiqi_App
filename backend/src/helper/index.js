@@ -17,25 +17,25 @@ export async function fetchData(req, opportunities) {
     gdpr
   } = await req.body;
 
+  console.log("\nFetching Data\n");
   let response = await getCountry(opportunities, currentCountry);
 
   if (startYourOwnBusiness === 'yes') {
+    console.log("entrepreneurship and incubation search");
     return await getEntrepreneurship(response);
   }
   response = await excludeEntrepreneurship(response);
 
-  // We have to split the responses to branches here, because at a later time we will have to return to present response
   const jobBranch = await getJob(response);
-  const eduBranch = await getEducation(response);
-  const trainBranch = await getTraining(response);
-
   const localJobs = await getLocalJobs(jobBranch, assessYourJobReadiness, educationAndWorkBackground);
 
   if(localJobs.length) {
     const sufficientLanguage = await filterByLanguage(localJobs, localLanguageLevel, englishLevel);
     if(sufficientLanguage.length) {
+      console.log("job found in location!");
       return sufficientLanguage;
     }
+    console.log("applicant can find a job locally if he/she enhances his/her language skills");
     return await getLanguageEducation(response);
   }
   // couldn't find any local jobs opportunities
@@ -43,26 +43,41 @@ export async function fetchData(req, opportunities) {
   const onlineJobs = await getOnlineJobs(jobBranch, assessYourJobReadiness, educationAndWorkBackground);
 
   if(onlineJobs.length) {
-    if(digitalToolsLevel >= 7) {
-      if(englishLevel >= 7 ){
-        return onlineJobs;
-      }
-      return await getEnglishEducation(response);
+    console.log("online job found!");
+    const sufficientEnglish = englishLevel >= 7;
+    const sufficientDigitalSkills = digitalToolsLevel >= 7;
+    let education = [];
+    if(!sufficientEnglish) {
+      console.log("applicant english level is not enough");
+      education = [...await getEnglishEducation(response), ...education]
     }
-    return await getDigitalEducation(response);
+    if(!sufficientDigitalSkills) {
+      console.log("applicant digital skills are not enough");
+      education = [...education, ...await getDigitalEducation(response)]
+    }
+    if(education.length) {
+      return education;
+    }
+    return onlineJobs;
   }
-  // couldn't find any online jobs opportunities
+  console.log("no Job found"); // couldn't find any online jobs opportunities
 
+  const eduBranch = await getEducation(response);
+  const trainBranch = await getTraining(response);
+  console.log("applicant needs trainings or superior university education");
   if(highestDegreeObtained === 'none') {
     return await getBachelorDegree(eduBranch);
   } else {
-    const trainingAndEducation = Object.assign(eduBranch, trainBranch);
+    const trainingAndEducation = [...eduBranch, ...trainBranch];
     const localTrainAndEdu = await getLocalDelivery(trainingAndEducation);
-    if(localTrainAndEdu.length) {
-      const sufficientLanguage = await filterByLanguage(localTrainAndEdu, localLanguageLevel, englishLevel);
+    const themeFiltered = await excludeIntegration(localTrainAndEdu);
+    if(themeFiltered.length) {
+      console.log("training opportunity found in location!");
+      const sufficientLanguage = await filterByLanguage(themeFiltered, localLanguageLevel, englishLevel);
       if(sufficientLanguage.length) {
         const closestBackground = await getClosestResults(sufficientLanguage);
         if(closestBackground.length) {
+          console.log("trainings in different domains but with basic entry requirements are suggested");
           return closestBackground;
         } else {
           return await getBeginnerTraining(response);
@@ -88,21 +103,24 @@ export async function fetchData(req, opportunities) {
       }
     }
   }
-  // couldn't find any training and education opportunities
-
+  console.log("Nothing found!"); // couldn't find any training and education opportunities
   return [];
 }
 
 export async function filterResponse(opportunities, relation, key, value, exclude = false) {
+  let desc = ("\tFilter: "+key.toString()+(exclude?" !":" ")+"= "+value.toString()+" [ => ] "+opportunities.length+" >>");
   try {
     const result = await filter(
         relation(key, value),
         opportunities
     );
-    if(exclude)
+    if(exclude) {
+      console.log(desc, (opportunities.length-result.length));
       return difference(opportunities, result);
-    else
+    } else {
+      console.log(desc, result.length);
       return result;
+    }
   } catch (e) {
     console.error(e);
     return 'parameter opportunities are missing, Please call the function with data.';
@@ -112,7 +130,7 @@ export async function filterResponse(opportunities, relation, key, value, exclud
 async function getCountry(opportunities, countryQuery) {
   const country = await filterResponse(opportunities, propEq, 'country', countryQuery);
   const global = await filterResponse(opportunities, propEq, 'country', 'Global');
-  return Object.assign(global, country);
+  return [...global, ...country];
 }
 
 async function getEntrepreneurship(opportunities) {
@@ -134,7 +152,8 @@ async function getEducation(opportunities) {
 async function getTraining(opportunities) {
   const training = await filterResponse(opportunities, propEq, 'category', 'Training');
   const certified = await filterResponse(opportunities, propEq, 'category', 'Certified Training');
-  return Object.assign(training, certified);
+  const weekend = await filterResponse(opportunities, propEq, 'category', 'Weekend Training');
+  return [...training, ...certified, ...weekend];
 }
 
 async function getLocalJobs(opportunities, applicantLevel, background) {
@@ -149,7 +168,7 @@ async function getLocalJobs(opportunities, applicantLevel, background) {
 async function getSameBackground(opportunities, cluster) {
   const background = await filterResponse(opportunities, propEq, 'cluster_nb', cluster);
   const notApplicable = await filterResponse(opportunities, propEq, 'cluster_nb', 'not applicable');
-  return Object.assign(notApplicable, background);
+  return [...notApplicable, ...background];
 }
 
 async function getOnlineJobs(opportunities, applicantLevel, background) {
@@ -164,7 +183,7 @@ async function getOnlineJobs(opportunities, applicantLevel, background) {
 async function getLanguageEducation(opportunities) {
   const languageEducation = await filterResponse(opportunities, propEq, 'theme', 'language education');
   const integration = await filterResponse(opportunities, propEq, 'theme', 'integration');
-  return Object.assign(integration, languageEducation);
+  return [...integration, ...languageEducation];
 }
 
 async function filterByLanguage(opportunities, localLanguageLevel, englishLevel) {
@@ -175,9 +194,10 @@ async function filterByLanguage(opportunities, localLanguageLevel, englishLevel)
 }
 
 async function getEnglishEducation(opportunities) {
-  const languageEducation = await filterResponse(opportunities, propEq, 'theme', 'language education');
+  const LanguageEducation = await filterResponse(opportunities, propEq, 'theme', 'language education');
+  const EnglishEducation = await filterResponse(opportunities, propEq, 'theme', 'English education');
   const integration = await filterResponse(opportunities, propEq, 'theme', 'integration');
-  return Object.assign(integration, languageEducation);
+  return [...integration, ...EnglishEducation, ...LanguageEducation];
 }
 
 async function getDigitalEducation(opportunities) {
@@ -214,4 +234,9 @@ async function getClosestResults(opportunities) {
   const notBeginnerResults = await excludeBeginnerLevel(opportunities);
   // TODO Filter by the distance function that will be added later.
   return notBeginnerResults;
+}
+
+async function excludeIntegration(opportunities) {
+  //const languageEducation = await filterResponse(opportunities, propEq, 'theme', 'language education', true);
+  return await filterResponse(opportunities, propEq, 'theme', 'integration', true);
 }
