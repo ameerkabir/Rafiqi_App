@@ -1,5 +1,6 @@
+
 import { uniq, pipe } from 'ramda';
-import { fetchData, getEntrepreneurship } from '../helper';
+import { fetchData, getEntrepreneurship, getBody } from '../helper';
 import opportunities from '../helper/data.json';
 import RafiqiContext from '../routes/context/rafiqi';
 export const homepage = (req, res) => {
@@ -22,7 +23,7 @@ export const resultData = async (req, res) => {
   const { startYourOwnBusiness } = await req.body;
   try {
     const opportunities = await RafiqiContext.findAll();
-    const response = await fetchData(req, opportunities);
+    const response = await fetchData(getBody(req), opportunities);
     if (response.length) {
       return res.status(200).json({
         data: response
