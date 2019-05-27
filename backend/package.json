@@ -17,10 +17,11 @@
     "compression": "^1.7.3",
     "core-js": "2",
     "cors": "^2.8.5",
+    "deep-equal-in-any-order": "^1.0.13",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
-    "mongoose": "^5.5.5",
+    "mongoose": "^5.5.7",
     "nodemailer": "^5.0.0",
     "ramda": "^0.26.1"
   },
