@@ -42,7 +42,7 @@ export async function fetchData(obj, opportunities) {
     if(sufficientLanguage.length) {
       return sufficientLanguage;
     }
-    return await getLanguageEducation(response);
+    return await getLanguageEducation(response, localLanguageLevel, englishLevel);
   }
   // couldn't find any local jobs opportunities
 
@@ -74,7 +74,7 @@ export async function fetchData(obj, opportunities) {
           return await getBeginnerTraining(response);
         }
       } else {
-        return await getLanguageEducation(response);
+        return await getLanguageEducation(response, localLanguageLevel, englishLevel);
       }
     } else {
       const onlineTrainAndEdu = await getOnlineDelivery(trainingAndEducation);
@@ -167,9 +167,10 @@ async function getOnlineJobs(opportunities, applicantLevel, background) {
   return suitableJobs;
 }
 
-async function getLanguageEducation(opportunities) {
+async function getLanguageEducation(opportunities, localLanguageLevel, englishLevel) {
   const languageEducation = await filterResponse(opportunities, propEq, 'theme', 'language education');
-  const integration = await filterResponse(opportunities, propEq, 'theme', 'integration');
+  let integration = await filterResponse(opportunities, propEq, 'theme', 'integration');
+  integration = await filterByLanguage(integration, localLanguageLevel, englishLevel);
   return [...integration, ...languageEducation];
 }
 
