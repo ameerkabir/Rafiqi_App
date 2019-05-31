@@ -1,4 +1,5 @@
 import {propEq, filter, gte, difference, propSatisfies} from 'ramda';
+import distance from './distance.json';
 
 export async function getBody(req){
   let data_ = {};
@@ -65,13 +66,14 @@ export async function fetchData(obj, opportunities) {
     const trainingAndEducation = [...eduBranch, ...trainBranch];
     const localTrainAndEdu = await getLocalDelivery(trainingAndEducation);
     if(localTrainAndEdu.length) {
-      const sufficientLanguage = await filterByLanguage(localTrainAndEdu, localLanguageLevel, englishLevel);
+      const excludeLanguageEdu = await excludeLanguageEducation(localTrainAndEdu);
+      const sufficientLanguage = await filterByLanguage(excludeLanguageEdu, localLanguageLevel, englishLevel);
       if(sufficientLanguage.length) {
-        const closestBackground = await getClosestResults(sufficientLanguage);
+        const closestBackground = await getClosestResults(sufficientLanguage, educationAndWorkBackground);
         if(closestBackground.length) {
           return closestBackground;
         } else {
-          return await getBeginnerTraining(response);
+          return await getBeginnerTraining(localTrainAndEdu);
         }
       } else {
         return await getLanguageEducation(response);
@@ -81,11 +83,12 @@ export async function fetchData(obj, opportunities) {
       if(onlineTrainAndEdu.length) {
         if(digitalToolsLevel >= 7) {
           if(englishLevel >= 7 ){
-            const closestBackground = await getClosestResults(onlineTrainAndEdu);
+            //const excludeLanguageEdu = await excludeLanguageEducation(onlineTrainAndEdu);
+            const closestBackground = await getClosestResults(onlineTrainAndEdu, educationAndWorkBackground);
             if(closestBackground.length) {
               return closestBackground;
             } else {
-              return await getBeginnerTraining(response);
+              return await getBeginnerTraining(onlineTrainAndEdu);
             }
           }
           return await getEnglishEducation(response);
@@ -173,6 +176,11 @@ async function getLanguageEducation(opportunities) {
   return [...integration, ...languageEducation];
 }
 
+async function excludeLanguageEducation(opportunities) {
+  const languageEducation = await filterResponse(opportunities, propEq, 'theme', 'language education', true);
+  return await filterResponse(languageEducation, propEq, 'theme', 'integration', true);
+}
+
 async function filterByLanguage(opportunities, localLanguageLevel, englishLevel) {
   const criteria = (k, v) => propSatisfies(gte(v), k);
   let suitableByLanguage = await filterResponse(opportunities, criteria, 'local_lan_requirements', localLanguageLevel);
@@ -215,8 +223,23 @@ async function excludeBeginnerLevel(opportunities) {
   return await filterResponse(opportunities, propEq, 'level', '1', true);
 }
 
-async function getClosestResults(opportunities) {
-  const notBeginnerResults = await excludeBeginnerLevel(opportunities);
-  // TODO Filter by the distance function that will be added later.
-  return notBeginnerResults;
+async function getClosestResults(opportunities, background) {
+    let excludedResult = await excludeBeginnerLevel(opportunities);
+    const jsonRow = distance[background];
+    //console.log(jsonRow);
+    for(let key in jsonRow) {
+        //console.log("key:"+key+" val:"+jsonRow[key]);
+        if (jsonRow.hasOwnProperty(key)) {
+            //console.log("owns");
+            if(jsonRow[key]>=0.5) {
+                excludedResult = excludeBackground(excludedResult, key);
+            }
+        }
+    }
+  return excludedResult;
+}
+
+async function excludeBackground(opportunities, background) {
+    //console.log("Exclude "+background+"from opportunities");
+  return await filterResponse(opportunities, propEq, 'cluster_nb', background, true);
 }
