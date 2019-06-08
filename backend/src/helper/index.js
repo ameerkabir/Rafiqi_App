@@ -19,10 +19,6 @@ export async function fetchData(req, opportunities) {
   const HIGHEST_DEGREE_OBTAINED = highestDegreeObtained && Number(highestDegreeObtained);
   const EDUCATION_AND_WORK_BACKGROUND = educationAndWorkBackground && Number(educationAndWorkBackground);
   const ASSESS_YOUR_JOB_READINESS = assessYourJobReadiness && Number(assessYourJobReadiness);
-
-  console.info('primitive', typeof HIGHEST_DEGREE_OBTAINED);
-  // console.info('this is the body ', req.body);
-
   let response = await getCountry(opportunities, currentCountry);
 
   if (startYourOwnBusiness === 'yes') {
