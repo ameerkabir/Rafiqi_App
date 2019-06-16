@@ -1,40 +1,42 @@
-import React from "react";
-import { withFormik, Form, Field } from "formik";
-import { steps } from "./Steps";
-import { RadioButtonGroup, RadioButton } from "./radioButtons";
+import React from 'react';
+import { withFormik, Form, Field } from 'formik';
+import { steps } from './Steps';
+import { RadioButtonGroup, RadioButton } from './radioButtons';
 
 const educationAndWorkBackgroundOptions = [
-  { label: "IT support and Networking", value: "itSupportAndNetworking" },
+  { label: 'IT support and Networking', value: 1 },
   {
-    label: "Web Mobile Software Development",
-    value: "webMobileSoftwareDevelopment"
+    label: 'Web Mobile Software Development',
+    value: 2
   },
-  { label: "Artificial Intelligence", value: "ArtificialIntelligence" },
-  { label: "Healthcare Professional", value: "HealthCareProfessional" },
-  { label: "None IT Engineer", value: "noneItEngineer" },
+  { label: 'Data Analytics', value: 3 },
+
+  { label: 'Artificial Intelligence', value: 4 },
+  { label: 'Healthcare Professional', value: 5 },
+  { label: 'None IT Engineer', value: 6 },
   {
-    label: "Skilled Trades(houseKeeper, plummer, electrician, agriculture)",
-    value: "skilledTrades"
+    label: 'Skilled Trades(houseKeeper, plummer, electrician, agriculture)',
+    value: 7
   },
-  { label: "Teaching", value: "teaching" },
-  { label: "Digital Marketing", value: "digitalMarketing" },
-  { label: "Sales Customer Service", value: "salesCustomerService" },
+  { label: 'Teaching', value: 8 },
+  { label: 'Digital Marketing', value: 9 },
+  { label: 'Sales Customer Service', value: 10 },
   {
-    label: "Artist & Creative Vocations(painter, poet)",
-    value: "artistAndCreative"
+    label: 'Artist & Creative Vocations(painter, poet)',
+    value: 11
   },
   {
-    label: "Content Manger(Writer, translator, content creator)",
-    value: "contentManger"
+    label: 'Content Manger(Writer, translator, content creator)',
+    value: 12
   },
-  { label: "Legal", value: "legal" },
-  { label: "Political & Social Science", value: "politicalAndSocialScience" },
-  { label: "Social Worker", value: "socialWorker" },
-  { label: "Accounting And Finance", value: "accountingAndFinance" },
-  { label: "Business And Management", value: "businessAndManagement" },
-  { label: "Scientific Research", value: "scientificResearch" },
-  { label: "Research Others", value: "researchOthers" },
-  { label: "Others", value: "others" }
+  { label: 'Legal', value: 13 },
+  { label: 'Political & Social Science', value: 14 },
+  { label: 'Social Worker', value: 15 },
+  { label: 'Accounting And Finance', value: 16 },
+  { label: 'Business And Management', value: 17 },
+  { label: 'Scientific Research', value: 18 },
+  { label: 'Research Others', value: 19 },
+  { label: 'Others', value: 20 }
 ];
 const GetFormOption = () => {
   return educationAndWorkBackgroundOptions.map((item, id) => {
@@ -66,7 +68,7 @@ const FormData = ({
             id="fullName"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.fullName === undefined ? "" : values.fullName}
+            value={values.fullName === undefined ? '' : values.fullName}
           />
         </div>
         <div className="form-group col-md-4">
@@ -231,7 +233,7 @@ const FormData = ({
               required
               component={RadioButton}
               name="highestDegreeObtained"
-              id="bachelorDegree"
+              id="1"
               label="Bachelor degree"
               className="form-check-label ml-4"
             />
@@ -239,7 +241,7 @@ const FormData = ({
               required
               component={RadioButton}
               name="highestDegreeObtained"
-              id="associateDegree"
+              id="2"
               label="Associate Degree"
               className="form-check-label"
             />
@@ -247,7 +249,7 @@ const FormData = ({
               required
               component={RadioButton}
               name="highestDegreeObtained"
-              id="masterOrHigher"
+              id="3"
               label="Master/Higher"
               className="form-check-label"
             />
@@ -256,7 +258,7 @@ const FormData = ({
               required
               component={RadioButton}
               name="highestDegreeObtained"
-              id="noDegree"
+              id="4"
               label="No Degree"
               className="form-check-label"
             />
@@ -302,7 +304,7 @@ const FormData = ({
               required
               component={RadioButton}
               name="assessYourJobReadiness"
-              id="lostDomainKnowledge"
+              id='1'
               label="I lost all my domain knowledge"
               className="form-check-input"
             />
@@ -310,7 +312,7 @@ const FormData = ({
               required
               component={RadioButton}
               name="assessYourJobReadiness"
-              id="knowledgeRefresh"
+              id="2"
               label="I need to refresh my knowledge"
               className="form-check-input"
             />
@@ -318,7 +320,7 @@ const FormData = ({
               required
               component={RadioButton}
               name="assessYourJobReadiness"
-              id="readyForWork"
+              id="3"
               label="My knowledge is intact and I am fully ready for work"
               className="form-check-input"
             />
@@ -378,7 +380,7 @@ const FormData = ({
       <br />
       <div className="form-row align-items-center">
         <button className="btn-prev-next btn btn-primary bg-blue" type="submit">
-          explore{" "}
+          explore{' '}
         </button>
       </div>
     </Form>
@@ -387,17 +389,17 @@ const FormData = ({
 const FormikeComponent = withFormik({
   mapPropsToStatus: () => {
     return {
-      fullName: "",
-      gender: "",
-      email: "",
-      age: "",
-      currentCountry: "",
+      fullName: '',
+      gender: '',
+      email: '',
+      age: '',
+      currentCountry: '',
       englishLevel: 1,
       digitalToolsLevel: 1,
-      localLanguageLevel: "",
-      highestDegreeObtained: "",
-      educationAndWorkBackground: "",
-      assessYourJobReadiness: "",
+      localLanguageLevel: '',
+      highestDegreeObtained: '',
+      educationAndWorkBackground: '',
+      assessYourJobReadiness: '',
       startYourOwnBusiness: false,
       gdpr: false
     };
