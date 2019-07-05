@@ -4,6 +4,7 @@ import { steps } from './Steps';
 import { RadioButtonGroup, RadioButton } from './radioButtons';
 
 const educationAndWorkBackgroundOptions = [
+  {label: 'select education and work background'},
   { label: 'IT support and Networking', value: 1 },
   {
     label: 'Web Mobile Software Development',
