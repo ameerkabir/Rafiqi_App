@@ -19,6 +19,7 @@ const Header = styled.h3`
 `;
 class App extends Component {
   render() {
+    console.log(process.env);
     return (
       <Fragment children="container">
         <Header>Rafiqi App</Header>

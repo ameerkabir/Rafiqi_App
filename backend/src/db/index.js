@@ -8,6 +8,8 @@ import config from '../config';
  */
 export default function connectToDb() {
   const { name } = config.db;
+
+  console.log(name, typeof name)
   try {
     if (config.env === 'PRODUCTION') {
       mongoose.connect(config.db.connection, {

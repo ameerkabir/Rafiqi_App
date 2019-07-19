@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Forms from './Forms';
-import Results from './Results';
+import React, { Component } from "react";
+
+import axios from "axios";
+import Forms from "./Forms";
+import Results from "./Results";
 export const steps = {
   one: 1,
   result: 2
@@ -37,7 +38,8 @@ export default class Steps extends Component {
   postData = async values => {
     if (!values) return;
     try {
-      const url = 'http://localhost:4000/search';
+      const ApI = process.env;
+      const url = `${process.env.API}/search`;
       const dataToPost = await axios.post(url, values);
       debugger;
       const data = await dataToPost;
