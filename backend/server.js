@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
 import bodyParser from 'body-parser';
-import api from './routes/index';
-import connectToDb from './db';
+import api from './src/routes';
+import connectToDb from './src/db';
 
 function startAPI() {
   const app = express()

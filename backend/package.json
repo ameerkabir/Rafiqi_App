@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon -w src --exec \"babel-node src/index.js\"",
-    "test": "mocha --require @babel/register"
+    "dev": "nodemon -w src --exec \"babel-node server.js\"",
+    "test": "mocha --require @babel/register",
+    "prod": "babel-node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +23,11 @@
     "lodash": "^4.17.11",
     "mongoose": "^5.5.7",
     "nodemailer": "^5.0.0",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
