@@ -13,7 +13,8 @@
     "comments": "",
     "cluster_nb": "17",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -29,7 +30,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -45,7 +47,8 @@
     "comments": "",
     "cluster_nb": "6",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -61,7 +64,8 @@
     "comments": "",
     "cluster_nb": "14",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -77,7 +81,8 @@
     "comments": "",
     "cluster_nb": "15",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -93,7 +98,8 @@
     "comments": "",
     "cluster_nb": "17",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -109,7 +115,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -125,7 +132,8 @@
     "comments": "",
     "cluster_nb": "6",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -141,7 +149,8 @@
     "comments": "",
     "cluster_nb": "14",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -157,7 +166,8 @@
     "comments": "",
     "cluster_nb": "15",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -173,7 +183,8 @@
     "comments": "",
     "cluster_nb": "17",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -189,7 +200,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -205,7 +217,8 @@
     "comments": "",
     "cluster_nb": "6",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -221,7 +234,8 @@
     "comments": "",
     "cluster_nb": "14",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Kiron",
@@ -237,7 +251,8 @@
     "comments": "",
     "cluster_nb": "15",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Delite Labs",
@@ -253,7 +268,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Delite Labs",
@@ -269,7 +285,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "MIT React",
@@ -285,7 +302,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "MIT React",
@@ -301,7 +319,8 @@
     "comments": "",
     "cluster_nb": "3",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Redi School of digital integration",
@@ -317,7 +336,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Redi School of digital integration",
@@ -333,7 +353,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "R ventures Foundation",
@@ -349,7 +370,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Code to Change",
@@ -365,7 +387,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "BSSA program",
@@ -381,7 +404,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "BSSA program",
@@ -397,7 +421,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "BSSA program",
@@ -413,7 +438,8 @@
     "comments": "",
     "cluster_nb": "12",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "BSSA program",
@@ -429,7 +455,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Restart Network",
@@ -445,7 +472,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Hack Your Future",
@@ -461,7 +489,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Hack Your Future",
@@ -477,7 +506,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Hack Your Future",
@@ -493,7 +523,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "University of the people",
@@ -509,7 +540,8 @@
     "comments": "",
     "cluster_nb": "17",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "University of the people",
@@ -525,7 +557,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "University of the people",
@@ -541,7 +574,8 @@
     "comments": "",
     "cluster_nb": "5",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "University of the people",
@@ -557,7 +591,8 @@
     "comments": "",
     "cluster_nb": "17",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "University of the people",
@@ -573,7 +608,8 @@
     "comments": "",
     "cluster_nb": "17",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "University of the people",
@@ -589,7 +625,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "University of the people",
@@ -605,7 +642,8 @@
     "comments": "",
     "cluster_nb": "5",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Singa",
@@ -621,7 +659,8 @@
     "comments": "available in Paris, lyon, montpelier, Lille and St etienne",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Singa Finkela Program",
@@ -637,7 +676,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Singa Finkela Program",
@@ -653,7 +693,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Singa",
@@ -669,7 +710,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "8",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Devugees Orientation Course",
@@ -685,7 +727,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Devugees Orientation Course",
@@ -701,7 +744,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Devugees",
@@ -717,7 +761,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Devugees",
@@ -733,7 +778,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Job4refugees",
@@ -749,7 +795,8 @@
     "comments": "",
     "cluster_nb": "1",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Job4refugees",
@@ -765,7 +812,8 @@
     "comments": "",
     "cluster_nb": "3",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Job4refugees",
@@ -781,7 +829,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Job4refugees",
@@ -797,7 +846,8 @@
     "comments": "",
     "cluster_nb": "7",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Job4refugees",
@@ -813,7 +863,8 @@
     "comments": "",
     "cluster_nb": "6",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "PMI Institute",
@@ -829,7 +880,8 @@
     "comments": "",
     "cluster_nb": "17",
     "local_lan_requirements": "4",
-    "en_requirements": "4"
+    "en_requirements": "4",
+    "start_date": ""
   },
   {
     "opportunity_name": "PMI Institute",
@@ -845,7 +897,8 @@
     "comments": "",
     "cluster_nb": "17",
     "local_lan_requirements": "4",
-    "en_requirements": "4"
+    "en_requirements": "4",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Talent Hub",
@@ -861,7 +914,8 @@
     "comments": "",
     "cluster_nb": "1",
     "local_lan_requirements": "3",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Talent Hub",
@@ -877,7 +931,8 @@
     "comments": "",
     "cluster_nb": "3",
     "local_lan_requirements": "3",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Talent Hub",
@@ -893,7 +948,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "3",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Talent Hub",
@@ -909,7 +965,8 @@
     "comments": "",
     "cluster_nb": "7",
     "local_lan_requirements": "3",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Talent Hub",
@@ -925,7 +982,8 @@
     "comments": "",
     "cluster_nb": "6",
     "local_lan_requirements": "3",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "BBQ Berufliche bildung",
@@ -941,7 +999,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Joblinge Kompass",
@@ -957,7 +1016,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "stiftung-jobfuehrerschein",
@@ -973,7 +1033,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Chatterbox",
@@ -989,7 +1050,8 @@
     "comments": "",
     "cluster_nb": "8",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Project Integration",
@@ -1005,7 +1067,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Project Integration",
@@ -1021,7 +1084,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Project Integration",
@@ -1037,7 +1101,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Project Integration",
@@ -1053,7 +1118,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1069,7 +1135,8 @@
     "comments": "",
     "cluster_nb": "1",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1085,7 +1152,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1101,7 +1169,8 @@
     "comments": "",
     "cluster_nb": "5",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1117,7 +1186,8 @@
     "comments": "",
     "cluster_nb": "6",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1133,7 +1203,8 @@
     "comments": "",
     "cluster_nb": "7",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1149,7 +1220,8 @@
     "comments": "",
     "cluster_nb": "9",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1165,7 +1237,8 @@
     "comments": "",
     "cluster_nb": "10",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1181,7 +1254,8 @@
     "comments": "",
     "cluster_nb": "15",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Thrive",
@@ -1197,7 +1271,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "7",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Camarada",
@@ -1213,7 +1288,8 @@
     "comments": "only open for women",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "2",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Camarada",
@@ -1229,7 +1305,8 @@
     "comments": "only open for women",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Camarada",
@@ -1245,7 +1322,8 @@
     "comments": "only open for women",
     "cluster_nb": "7",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Cuisine Lab",
@@ -1261,7 +1339,8 @@
     "comments": "",
     "cluster_nb": "7",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Migration Initiative",
@@ -1277,7 +1356,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "5",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Migration Initiative",
@@ -1293,7 +1373,8 @@
     "comments": "Offers post graduate degrees only",
     "cluster_nb": "14",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Migration Initiative",
@@ -1309,7 +1390,8 @@
     "comments": "Offers post graduate degrees only",
     "cluster_nb": "14",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Startup Kitchen",
@@ -1325,7 +1407,8 @@
     "comments": "",
     "cluster_nb": "7",
     "local_lan_requirements": "1",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Council",
@@ -1341,7 +1424,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Council",
@@ -1357,7 +1441,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Council",
@@ -1373,7 +1458,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Health Professionals Building Bridges Program",
@@ -1389,7 +1475,8 @@
     "comments": "",
     "cluster_nb": "5",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Council Just Bread project",
@@ -1405,7 +1492,8 @@
     "comments": "",
     "cluster_nb": "7",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Council Starbucks Employment Support",
@@ -1421,7 +1509,8 @@
     "comments": "",
     "cluster_nb": "7",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Code your Future",
@@ -1437,7 +1526,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Code your Future",
@@ -1453,7 +1543,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "7",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1469,7 +1560,8 @@
     "comments": "",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1485,7 +1577,8 @@
     "comments": "",
     "cluster_nb": "1",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1501,7 +1594,8 @@
     "comments": "",
     "cluster_nb": "3",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1517,7 +1611,8 @@
     "comments": "",
     "cluster_nb": "6",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1533,7 +1628,8 @@
     "comments": "",
     "cluster_nb": "11",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1549,7 +1645,8 @@
     "comments": "",
     "cluster_nb": "12",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1565,7 +1662,8 @@
     "comments": "",
     "cluster_nb": "12",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1581,7 +1679,8 @@
     "comments": "",
     "cluster_nb": "13",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1597,7 +1696,8 @@
     "comments": "",
     "cluster_nb": "1",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1613,7 +1713,8 @@
     "comments": "",
     "cluster_nb": "10",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1629,7 +1730,8 @@
     "comments": "",
     "cluster_nb": "10",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1645,7 +1747,8 @@
     "comments": "",
     "cluster_nb": "16",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1661,7 +1764,8 @@
     "comments": "",
     "cluster_nb": "4",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1677,7 +1781,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Upwork",
@@ -1693,7 +1798,8 @@
     "comments": "",
     "cluster_nb": "4",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Coursera for refugees",
@@ -1709,7 +1815,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "1"
+    "en_requirements": "1",
+    "start_date": ""
   },
   {
     "opportunity_name": "Coursera for refugees",
@@ -1725,7 +1832,8 @@
     "comments": "free specialization for refugees",
     "cluster_nb": "1",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Coursera for refugees",
@@ -1741,7 +1849,8 @@
     "comments": "free specialization for refugees",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Coursera for refugees",
@@ -1757,7 +1866,8 @@
     "comments": "free specialization for refugees",
     "cluster_nb": "3",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Coursera for refugees",
@@ -1773,7 +1883,8 @@
     "comments": "free specialization for refugees",
     "cluster_nb": "3",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Coursera for refugees",
@@ -1789,7 +1900,8 @@
     "comments": "free specialization for refugees",
     "cluster_nb": "4",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Coursera for refugees",
@@ -1805,7 +1917,8 @@
     "comments": "free specialization for refugees",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "6"
+    "en_requirements": "6",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1821,7 +1934,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "9",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1837,7 +1951,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "9",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1853,7 +1968,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1869,7 +1985,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1885,7 +2002,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "3",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1901,7 +2019,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1917,7 +2036,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1933,7 +2053,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1949,7 +2070,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1965,7 +2087,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "2",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1981,7 +2104,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "3",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -1997,7 +2121,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "3",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -2013,7 +2138,8 @@
     "comments": "paid specialization + you need to study for 12 h/week",
     "cluster_nb": "4",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -2029,7 +2155,8 @@
     "comments": "paid specialization + you need to study for 12 h/week",
     "cluster_nb": "4",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -2045,7 +2172,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "4",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Udacity",
@@ -2061,7 +2189,8 @@
     "comments": "paid specialization + you need to study for 10 h/week",
     "cluster_nb": "4",
     "local_lan_requirements": "1",
-    "en_requirements": "7"
+    "en_requirements": "7",
+    "start_date": ""
   },
   {
     "opportunity_name": "Weorganization",
@@ -2077,7 +2206,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "Refugee Start Force",
@@ -2093,7 +2223,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "5"
+    "en_requirements": "5",
+    "start_date": ""
   },
   {
     "opportunity_name": "VOLKSHOCHSCHULE",
@@ -2109,7 +2240,8 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "1",
-    "en_requirements": "3"
+    "en_requirements": "3",
+    "start_date": ""
   },
   {
     "opportunity_name": "Alliance Francaise",
@@ -2125,6 +2257,7 @@
     "comments": "",
     "cluster_nb": "not applicable",
     "local_lan_requirements": "2",
-    "en_requirements": "3"
+    "en_requirements": "3",
+    "start_date": ""
   }
 ]
