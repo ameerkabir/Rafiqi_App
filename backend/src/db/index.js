@@ -11,14 +11,18 @@ export default function connectToDb() {
   try {
     if (config.env === 'PRODUCTION') {
       mongoose.connect(config.db.connection, {
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+
       });
     } else {
       // eslint-disable-next-line no-console
       console.log(`DB Connecting to ${name}`);
       mongoose.connect(`mongodb://127.0.0.1:27017/${name}`, {
         useNewUrlParser: true,
-        useFindAndModify: false
+        useFindAndModify: false,
+        useUnifiedTopology: true
+
       });
     }
   } catch (e) {
