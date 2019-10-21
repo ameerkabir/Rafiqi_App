@@ -25,16 +25,6 @@ yarn-debug.log*
 yarn-error.log*
 .vscode
 .env
-
+.idea
 /.circleci/
-backend/.idea/.gitignore
-backend/.idea/backend.iml
-backend/.idea/codeStyles/
-backend/.idea/dbnavigator.xml
-backend/.idea/misc.xml
-backend/.idea/modules.xml
-backend/.idea/vcs.xml
-backend/docker-compose.yaml
-backend/src/routes/context/stagingRafiqi/
-frontend/.idea/
 frontend/.yarnclean
