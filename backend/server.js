@@ -4,6 +4,7 @@ import compression from 'compression';
 import bodyParser from 'body-parser';
 import api from './src/routes';
 import connectToDb from './src/db';
+import  config from './src/config'
 
 function startAPI() {
   const app = express()
@@ -13,7 +14,7 @@ function startAPI() {
     .use(compression())
     .use(api());
 
-  const server = app.listen(4000 || config.port, () =>
+  const server = app.listen(config.port || 4000, () =>
     console.log(`Listening on http://localhost:${server.address().port}`)
   );
   connectToDb();
