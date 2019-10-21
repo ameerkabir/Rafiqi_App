@@ -15,8 +15,8 @@ export default class OpportunitiesService {
     return steps;
   }
 
-  async create(stepsData) {
-    return this.opportunitiesDao.create(stepsData);
+  async create(opportunityData) {
+    return this.opportunitiesDao.create(opportunityData);
   }
 
   async findOneAndUpdate(query, set) {
@@ -26,6 +26,9 @@ export default class OpportunitiesService {
   async hardDelete(query) {
     const steps = await this.opportunitiesDao.hardDelete(query);
     return steps;
+  }
+  async save(query){
+    return await this.opportunitiesDao.save(query);
   }
 
   async findAll() {
