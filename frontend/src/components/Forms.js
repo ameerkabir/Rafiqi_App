@@ -84,7 +84,7 @@ const FormData = ({
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="others">Other</option>
-            <option values="preferNotToSay">Prefer Not To Say</option>
+            <option value="preferNotToSay">Prefer Not To Say</option>
           </Field>
         </div>
 

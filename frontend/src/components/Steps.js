@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Forms from './Forms';
 import Results from './Results';
+import Opportunities from "./dataCollections";
+const Api = process.env.REACT_APP_API
 export const steps = {
   one: 1,
-  result: 2
+  result: 2,
+  dataCollection: 3
 };
 
 export default class Steps extends Component {
@@ -37,7 +40,7 @@ export default class Steps extends Component {
   postData = async values => {
     if (!values) return;
     try {
-      const url = 'http://localhost:4000/search';
+      const url = `${Api}/search`;
       const dataToPost = await axios.post(url, values);
       debugger;
       const data = await dataToPost;
@@ -52,7 +55,8 @@ export default class Steps extends Component {
     switch (this.state.step) {
       case steps.one:
         return (
-          <Forms saveAndGoTo={this.saveAndGoTo} postData={this.postData} />
+            <Opportunities/>
+
         );
       case steps.result:
         return (
@@ -61,6 +65,10 @@ export default class Steps extends Component {
             saveAndGoTo={this.saveAndGoTo}
             results={this.state.results}
           />
+        );
+      case steps.dataCollection:
+        return (
+       <Opportunities/>
         );
       default:
         return (
