@@ -13,7 +13,6 @@ export default function connectToDb() {
       mongoose.connect(config.db.connection, {
         useNewUrlParser: true,
         useUnifiedTopology: true
-
       });
     } else {
       // eslint-disable-next-line no-console
@@ -22,7 +21,6 @@ export default function connectToDb() {
         useNewUrlParser: true,
         useFindAndModify: false,
         useUnifiedTopology: true
-
       });
     }
   } catch (e) {
