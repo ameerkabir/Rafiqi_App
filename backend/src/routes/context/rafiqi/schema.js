@@ -67,7 +67,11 @@ const Opportunities = new Schema(
     en_requirements: {
       type: String,
       trim: true
-    }
+    },
+      start_date: {
+        type: String,
+          trim: true
+      },
   },
   { timestamps: { createdAt: true, updatedAt: true } }
 );
