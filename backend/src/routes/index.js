@@ -22,7 +22,7 @@ export default function api() {
   router.get("/migrate", migrate);
   router.post("/search", resultData);
   router.post("/opportunities", CreateOpportunities);
-  router.post("/staging", CreatStaging);
+  // router.post("/staging", CreatStaging);
   router.put("/opportunities", EditOpportunities);
   // router.post("/opportunities/Add", AddOpportunity);
   return router;

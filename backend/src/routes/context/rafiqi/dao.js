@@ -7,6 +7,7 @@ export default class OpportunitiesModelDao extends Dao {
   }
 
   async create(set) {
+    console.log('what is going on', OpportunitiesModel)
     const opportunitiesModel = new OpportunitiesModel(set);
     return opportunitiesModel.save();
   }

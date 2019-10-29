@@ -3,6 +3,7 @@ dependencies
 /.pnp
 .pnp.js
 .elasticbeanstalk/
+.idea/
 # testing
 /coverage
 

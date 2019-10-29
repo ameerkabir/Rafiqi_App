@@ -1,69 +1,77 @@
 import { Schema, model } from 'mongoose';
-const Opportunities = new Schema(
-  {
-    opportunity_name: {
-      type: String,
-      required: 'Opportunity name can not be empty',
-      trim: true
-    },
-    category: {
-      type: String,
 
-      trim: true
-    },
+let Opportunities;
+Opportunities = new Schema(
+    {
+        opportunity_name: {
+            type: String,
+            required: 'Opportunity name can not be empty',
+            trim: true
+        },
+        category: {
+            type: String,
 
-    mode_of_delivery: {
-      type: String,
+            trim: true
+        },
 
-      trim: true
-    },
-    theme: {
-      type: String,
+        mode_of_delivery: {
+            type: String,
 
-      trim: true
-    },
+            trim: true
+        },
+        theme: {
+            type: String,
 
-    country: {
-      type: String,
+            trim: true
+        },
 
-      trim: true
-    },
+        country: {
+            type: String,
 
-    city: {
-      type: String,
+            trim: true
+        },
 
-      trim: true
-    },
-    level: {
-      type: String,
+        city: {
+            type: String,
 
-      trim: true
-    },
-    duration: {
-      type: String,
+            trim: true
+        },
+        level: {
+            type: String,
 
-      trim: true
+            trim: true
+        },
+        duration: {
+            type: String,
+
+            trim: true
+        },
+        full_or_part: {
+            type: String,
+            trim: true
+        },
+        info: {
+            type: String,
+            trim: true
+        },
+        comments: {
+            type: String,
+            trim: true
+        },
+        cluster_nb: {
+            type: String,
+            trim: true
+        },
+        local_lan_requirements: {
+            type: String,
+            trim: true
+        },
+        en_requirements: {
+            type: String,
+            trim: true
+        }
     },
-    full_or_part: {
-      type: String,
-      trim: true
-    },
-    info: {
-      type: String,
-      trim: true
-    },
-    comments: {
-      type: String,
-      trim: true
-    },
-    cluster_nb: {
-      type: String,
-      trim: true
-    },
-    local_lan_requirements: {
-      type: String,
-      trim: true
-    },
+<<<<<<< Updated upstream
     en_requirements: {
       type: String,
       trim: true
@@ -74,6 +82,9 @@ const Opportunities = new Schema(
       },
   },
   { timestamps: { createdAt: true, updatedAt: true } }
+=======
+    {timestamps: {createdAt: true, updatedAt: true}}
+>>>>>>> Stashed changes
 );
 
 const OpportunitiesModel = model('opportunities', Opportunities);
