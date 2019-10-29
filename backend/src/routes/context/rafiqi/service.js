@@ -6,11 +6,13 @@ export default class OpportunitiesService {
   }
 
   async show(stepId) {
-    return await this.opportunitiesDao.findOneBy({stepId});
+    const step = await this.opportunitiesDao.findOneBy({ stepId });
+    return step;
   }
 
   async findBy(query, set) {
-    return await this.opportunitiesDao.findBy(query, set);
+    const steps = await this.opportunitiesDao.findBy(query, set);
+    return steps;
   }
 
   async create(opportunityData) {
@@ -22,7 +24,8 @@ export default class OpportunitiesService {
   }
 
   async hardDelete(query) {
-      return await this.opportunitiesDao.hardDelete(query);
+    const steps = await this.opportunitiesDao.hardDelete(query);
+    return steps;
   }
   async save(query){
     return await this.opportunitiesDao.save(query);
@@ -30,7 +33,6 @@ export default class OpportunitiesService {
 
   async findAll() {
     const steps = await this.opportunitiesDao.findAll();
-    console.log('opportunities', steps);
     return steps;
   }
 }

@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-const Opportunities = new Schema(
+const StagingOpportunities = new Schema(
   {
     opportunity_name: {
       type: String,
@@ -67,14 +67,10 @@ const Opportunities = new Schema(
     en_requirements: {
       type: String,
       trim: true
-    },
-      start_date: {
-        type: String,
-          trim: true
-      },
+    }
   },
   { timestamps: { createdAt: true, updatedAt: true } }
 );
 
-const OpportunitiesModel = model('opportunities', Opportunities);
-export default OpportunitiesModel;
+const StagingOpportunitiesModel = model('StagingOpportunities', StagingOpportunities);
+export default StagingOpportunitiesModel;
